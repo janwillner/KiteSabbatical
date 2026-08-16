@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kite-Sabbatical Asien · 20. Dez 2026 – 14. Feb 2027</title>
+<style>
+:root{
+  --bg:#faf9f7; --card:#ffffff; --ink:#1c1b19; --ink2:#3f3d39; --ink3:#6e6b65; --ink4:#9b9891;
+  --line:#e4e1db; --line2:#f0eeea; --sea:#e8eef2; --land:#dfdcd5;
+  --vn:#d97706; --kat:#2563eb; --ph:#0d9488; --sl:#7c3aed; --seg:#64748b; --tw:#dc2626; --jp:#0891b2;
+  --warn:#b45309; --warnbg:#fdf6ec; --ok:#15803d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px 90px}
+h1,h2,h3,h4{line-height:1.25;margin:0}
+h1{font-size:30px;font-weight:680;letter-spacing:-.4px}
+h2{font-size:20px;font-weight:640;letter-spacing:-.2px;margin:52px 0 6px}
+h3{font-size:16px;font-weight:640;margin:26px 0 6px}
+p{margin:9px 0}
+a{color:var(--kat)}
+.sub{color:var(--ink3);font-size:14px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+header.hero{border-bottom:1px solid var(--line);background:var(--card);margin-bottom:8px}
+.hero .wrap{padding-top:34px;padding-bottom:26px}
+.kicker{font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink4);font-weight:600;margin-bottom:9px}
+.facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px}
+.fact{font-size:13px}
+.fact b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--ink4);font-weight:600;margin-bottom:1px}
+
+.note{border-left:3px solid var(--warn);background:var(--warnbg);padding:13px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}
+.note b{color:var(--warn)}
+
+/* ---- Entscheidungshilfe ---- */
+.filters{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:14px}
+.frow{display:flex;gap:26px;flex-wrap:wrap}
+.fgrp{min-width:180px}
+.flabel{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--ink4);font-weight:600;margin-bottom:7px}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font:inherit;font-size:12.5px;padding:5px 11px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg);color:var(--ink2);transition:.12s}
+.chip:hover{border-color:var(--ink4)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fhint{font-size:11.5px;color:var(--ink4);margin-top:6px;max-width:230px;line-height:1.4}
+.fresult{margin-top:15px;padding-top:14px;border-top:1px solid var(--line2);font-size:13.5px;color:var(--ink3)}
+.fresult b{color:var(--ink)}
+.reset{font:inherit;font-size:12px;color:var(--ink3);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px}
+
+/* ---- Optionskarten ---- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-top:16px}
+.opt{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px 19px;transition:.16s}
+.opt.dim{opacity:.3}
+.opt.hidden{display:none}
+.opt .top{display:flex;align-items:baseline;gap:9px;margin-bottom:3px}
+.badge{font-size:11px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:5px;background:var(--line2);color:var(--ink2)}
+.opt h3{margin:0;font-size:16.5px}
+.opt .tag{font-size:11.5px;color:var(--ink4);margin-top:1px}
+.legs{margin:13px 0 0;padding:0;list-style:none;font-size:13.5px}
+.legs li{display:flex;gap:9px;padding:5px 0;border-top:1px solid var(--line2)}
+.legs li:first-child{border-top:none}
+.legs .dot{width:8px;height:8px;border-radius:50%;flex:none;margin-top:7px}
+.legs .dates{color:var(--ink4);font-size:12px;display:block}
+.opt .kv{display:flex;gap:14px;flex-wrap:wrap;margin-top:13px;padding-top:11px;border-top:1px solid var(--line2);font-size:12px;color:var(--ink3)}
+.opt .kv b{color:var(--ink2);font-weight:600}
+.pro{font-size:13px;margin-top:12px;color:var(--ink2)}
+.pro .p{color:var(--ok)}
+.pro .c{color:var(--warn)}
+.pro div{margin-top:3px}
+
+details.fly{margin-top:13px;border-top:1px solid var(--line2);padding-top:11px}
+details.fly summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--ink2);list-style:none;
+  display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+details.fly summary::-webkit-details-marker{display:none}
+details.fly summary::after{content:"▾";color:var(--ink4);font-size:11px;flex:none}
+details.fly[open] summary::after{content:"▴"}
+details.fly summary b{color:var(--ink3);font-weight:500;font-size:12px}
+.flist{margin:11px 0 0;padding:0;list-style:none;font-size:12.5px}
+.flist li{padding:8px 0;border-top:1px solid var(--line2)}
+.flist li:first-child{border-top:none}
+.flist .rt{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.flist .rt b{font-weight:600}
+.flist .pr{color:var(--ink3);white-space:nowrap;font-size:11.5px}
+.flist .fi{color:var(--ink3);line-height:1.45;margin-top:2px}
+.flist .direct{color:var(--ok);font-weight:600}
+.flist .step{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink4);font-weight:600}
+
+/* ---- Karte ---- */
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin:14px 0 10px}
+.tab{font:inherit;font-size:12.5px;padding:6px 12px;border-radius:7px;cursor:pointer;
+  background:var(--card);color:var(--ink3);border:1px solid var(--line)}
+.tab:hover{border-color:var(--ink4)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mapwrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+#map{display:block;width:100%;height:auto}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--ink3)}
+.legend span.k{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:15px;height:3px;border-radius:2px;flex:none}
+.detail{margin-top:9px;padding:12px 15px;border-radius:9px;background:var(--card);border:1px solid var(--line);
+  font-size:13.5px;min-height:70px}
+.detail .meta{color:var(--ink3);font-size:12px;margin-top:3px;display:block}
+.node{cursor:pointer}
+.node circle.hit{fill:transparent}
+
+/* ---- Tabellen ---- */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:12px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line2);vertical-align:top}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink4);font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:none}
+td.num{white-space:nowrap}
+.yes{color:var(--ok);font-weight:600}
+.no{color:var(--ink4)}
+.scroll{overflow-x:auto}
+
+/* ---- Checkliste ---- */
+.check{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px;margin-top:12px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--line2);
+  font-size:14px;cursor:pointer}
+.check label:first-child{border-top:none}
+.check input{margin-top:4px;flex:none;width:16px;height:16px;accent-color:var(--ink)}
+.check input:checked + span{color:var(--ink4);text-decoration:line-through}
+.check .q{font-weight:600;display:block}
+.check .why{font-size:12.5px;color:var(--ink3);display:block;margin-top:1px;font-weight:400;text-decoration:none!important}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink4)}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .filters,.tabs,.reset{display:none}
+  .opt{break-inside:avoid;opacity:1!important;display:block!important}
+  .grid{grid-template-columns:1fr 1fr}
+  h2{margin-top:26px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Reiseplanung · Entscheidungsgrundlage für die Gruppe</div>
+  <h1>Kite-Sabbatical Asien</h1>
+  <p class="sub">Sechs Routenoptionen für 20. Dezember 2026 bis 14. Februar 2027</p>
+  <div class="facts">
+    <div class="fact"><b>Dauer</b>57 Tage</div>
+    <div class="fact"><b>Gruppe</b>3–6 Personen</div>
+    <div class="fact"><b>Level</b>Fortgeschritten</div>
+    <div class="fact"><b>Budget/Person</b>5.000–10.000 € ohne Flug</div>
+    <div class="fact"><b>Saison</b>Nordost-Monsun</div>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<h2>Der Zielkonflikt</h2>
+<p>Das Reisefenster liegt genau im Nordost-Monsun — der besten Kite-Zeit Asiens. Aber Bareboat-Charter und Starkwind liegen geografisch nicht am selben Ort.</p>
+
+<div class="scroll"><table>
+<tr><th>Region</th><th>Bareboat möglich?</th><th>Kite-Wind Dez–Feb</th><th>Temperatur</th></tr>
+<tr><td><b>Phuket / Andamanensee</b> 🇹🇭</td><td class="yes">Ja — größte Flotte Asiens</td><td>Schwach, 5–20 kn, oft Motor</td><td>warm</td></tr>
+<tr><td><b>Langkawi</b> 🇲🇾</td><td class="yes">Ja — gute Flotte</td><td>Schwach, 10–20 kn</td><td>warm</td></tr>
+<tr><td><b>Vietnam</b> 🇻🇳</td><td class="no">Nein</td><td>Exzellent, 18–30 kn</td><td>warm</td></tr>
+<tr><td><b>Philippinen</b> 🇵🇭</td><td class="no">Praktisch nein</td><td>Exzellent, 15–35 kn</td><td>warm</td></tr>
+<tr><td><b>Sri Lanka</b> 🇱🇰</td><td class="no">Nein</td><td>Sehr gut, 16–20 kn</td><td>warm</td></tr>
+<tr><td><b>Okinawa</b> 🇯🇵</td><td class="no">Nein</td><td>Sehr gut, bis 30 kn</td><td>kühl, Neopren</td></tr>
+</table></div>
+
+<div class="note"><b>Warum keine Philippinen-Bareboat?</b> Nach philippinischer Regelung muss der verantwortliche Skipper entweder Eigner sein oder eine „Philippine Captain 1"-Lizenz halten — die nur Filipinos beantragen können.<br>
+<b>Warum kein Japan-Bareboat?</b> Japan verlangt eine japanische Small Vessel Operator's License. ICC, RYA und andere ausländische Scheine werden für japanisch geflaggte Boote nicht anerkannt.<br><br>
+<b>Konsequenz:</b> Wer selbst segeln will, segelt in Thailand oder Malaysia — dort, wo der Kite-Wind am schwächsten ist. Wer den Katamaran <i>zum Kiten</i> will, bucht eine skippered Kite-Safari auf den Philippinen.</div>
+
+<h2>Entscheidungshilfe</h2>
+<p class="sub">Auswählen, was der Gruppe wichtig ist — passende Optionen bleiben hervorgehoben.</p>
+
+<div class="filters">
+  <div class="frow">
+    <div class="fgrp">
+      <div class="flabel">Boot</div>
+      <div class="chips" data-f="boat">
+        <button class="chip on" data-v="*">egal</button>
+        <button class="chip" data-v="bareboat">selbst segeln</button>
+        <button class="chip" data-v="crew">mit Crew</button>
+        <button class="chip" data-v="none">kein Boot</button>
+      </div>
+    </div>
+    <div class="fgrp">
+      <div class="flabel">Temperatur</div>
+      <div class="chips" data-f="temp">
+        <button class="chip on" data-v="*">egal</button>
+        <button class="chip" data-v="warm">durchgehend warm</button>
+        <button class="chip" data-v="cold">Neopren ok</button>
+      </div>
+    </div>
+    <div class="fgrp">
+      <div class="flabel">Budget/Person ohne Flug</div>
+      <div class="chips" data-f="cost">
+        <button class="chip on" data-v="*">kein Limit</button>
+        <button class="chip" data-v="5500">bis 5.500 €</button>
+        <button class="chip" data-v="7500">bis 7.500 €</button>
+        <button class="chip" data-v="9000">bis 9.000 €</button>
+      </div>
+      <div class="fhint">Obergrenze — angezeigt wird alles, was darunter bleibt.</div>
+    </div>
+    <div class="fgrp">
+      <div class="flabel">Regionalflüge</div>
+      <div class="chips" data-f="hops">
+        <button class="chip on" data-v="*">egal</button>
+        <button class="chip" data-v="few">möglichst wenige (≤5)</button>
+      </div>
+    </div>
+  </div>
+  <div class="fresult" id="fresult"></div>
+</div>
+
+<h2>Die sechs Optionen</h2>
+<div class="grid" id="opts"></div>
+
+<h2>Karte</h2>
+<p class="sub">Route umschalten, Punkte antippen für Wind, Temperatur und Fallstricke.</p>
+<div class="tabs" id="maptabs"></div>
+<div class="mapwrap"><svg id="map" viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Routenkarte Ostasien"></svg></div>
+<div class="legend" id="legend"></div>
+<div class="detail" id="detail"></div>
+
+<h2>Direktvergleich</h2>
+<div class="scroll"><table id="cmp"></table></div>
+
+<h2>Spot-Referenz</h2>
+<p class="sub">Die Zahl, die am meisten entscheidet, ist nicht die Wassertemperatur, sondern der Windchill. 30 Knoten bei 16 °C fühlen sich an wie Nordsee im Oktober.</p>
+<div class="scroll"><table>
+<tr><th>Spot</th><th>Wind (Dez–Feb)</th><th>Luft Jan</th><th>Wasser</th><th>Neopren</th><th>Kites</th><th>Anmerkung</th></tr>
+<tr><td><b>Phan Rang</b> 🇻🇳</td><td>18–30 kn, Böen 40+</td><td>24–30 °C</td><td>25–26 °C</td><td class="no">keins</td><td>7–9 m</td><td>Flachwasser-Lagune, wenig Crowd</td></tr>
+<tr><td><b>Mui Ne</b> 🇻🇳</td><td>18–30 kn</td><td>24–30 °C</td><td>25–26 °C</td><td class="no">keins</td><td>7–9 m</td><td>Infrastruktur, Wellen, Silvester ausgebucht</td></tr>
+<tr><td><b>Boracay / Bulabog</b> 🇵🇭</td><td>15–25 kn, teils 30+</td><td>25–30 °C</td><td>27 °C</td><td class="no">keins</td><td>9–12 m</td><td>Morgens am besten, Flachwasser bei Ebbe</td></tr>
+<tr><td><b>Cuyo</b> 🇵🇭</td><td>20–35 kn fast täglich</td><td>25–30 °C</td><td>27 °C</td><td class="no">keins</td><td>7–9 m</td><td>Anreise 10–12 h Fähre, keine Traumaversorgung</td></tr>
+<tr><td><b>Kalpitiya</b> 🇱🇰</td><td>16–20 kn, ~25 Tage/Monat</td><td>27–31 °C</td><td>27–28 °C</td><td class="no">keins</td><td>12–14 m</td><td>Riesige Flachwasser-Lagunen, entspannt</td></tr>
+<tr><td><b>Phang Nga / Andamanensee</b> 🇹🇭</td><td>5–20 kn</td><td>24–32 °C</td><td>28 °C</td><td class="no">keins</td><td>14–17 m</td><td>Segelrevier, Kiten Bonus</td></tr>
+<tr><td><b>Ishigaki / Miyako</b> 🇯🇵</td><td>bis 30 kn N</td><td>15–21 °C</td><td>22–23 °C</td><td>3/2</td><td>7–10 m</td><td>Keine Shops, keine Schulen — alles selbst mitbringen. Miyakojima hat Flachwasser-Lagunen (Imgya, Yoshino)</td></tr>
+</table></div>
+
+<h2>Fristen und Fallstricke</h2>
+<div class="scroll"><table>
+<tr><th>Was</th><th>Wann</th><th>Warum es die Route beeinflusst</th></tr>
+<tr><td><b>Anschluss Okinawa–Philippinen</b></td><td>bei Optionen D und E</td><td>Es gibt keinen Direktflug. Über Taipeh oder Tokio dauert die Strecke über 10 ½ Stunden — als vollen Reisetag mit Puffer buchen, nicht als Anschluss.</td></tr>
+<tr><td><b>Weihnachten / Neujahr</b></td><td>24. Dez – 3. Jan</td><td>Teuerster Charter- und Flugtermin des Jahres. Der Bareboat-Törn liegt deshalb bewusst ab Mitte Januar.</td></tr>
+<tr><td><b>Silvester Mui Ne</b></td><td>31. Dez</td><td>Unterkünfte in Vietnam bis spätestens Oktober fixieren.</td></tr>
+<tr><td><b>Skipper-Nachweise</b></td><td>jetzt klären</td><td>Thailand-Charter verlangen Day Skipper/ICC + SRC/VHF + Sailing-Resume mit 2–3 Wochen Skippererfahrung. Ohne Papiere kein Bareboat.</td></tr>
+<tr><td><b>Cuyo-Logistik</b></td><td>Sept/Okt</td><td>Fragilster Punkt jeder Südroute: unregelmäßige Fähren, sehr wenige Betten.</td></tr>
+<tr><td><b>Versicherung</b></td><td>Nov</td><td>Langzeit-Auslandskranken mit <b>explizit eingeschlossenem Kitesurfen</b> und Rücktransport „ab medizinischer Sinnhaftigkeit".</td></tr>
+</table></div>
+
+<h3>Visa (deutscher Pass)</h3>
+<div class="scroll"><table>
+<tr><th>Land</th><th>Regelung</th><th>Vorlauf</th></tr>
+<tr><td>Vietnam</td><td>E-Visum, 90 Tage</td><td>3–5 Werktage online</td></tr>
+<tr><td>Thailand</td><td>Visumfrei 60 Tage</td><td>keiner</td></tr>
+<tr><td>Philippinen</td><td>Visumfrei 30 Tage, vor Ort verlängerbar</td><td>keiner</td></tr>
+<tr><td>Sri Lanka</td><td>ETA online, 30 Tage</td><td>vorab beantragen</td></tr>
+<tr><td>Taiwan</td><td>Visumfrei 90 Tage</td><td>keiner</td></tr>
+<tr><td>Japan</td><td>Visumfrei 90 Tage</td><td>keiner</td></tr>
+</table></div>
+<p class="sub">Pass muss bei jeder Einreise noch 6 Monate gültig sein — bei einer 8-Wochen-Reise mit vier Grenzübertritten leicht zu übersehen.</p>
+
+<h2>Flüge ab Zürich — was ihr wissen müsst</h2>
+<p>Die genauen Etappen stehen in jeder Optionskarte unter „Flüge ab Zürich". Hier das, was für alle Varianten gilt.</p>
+
+<h3>Die drei Direktflüge, die es ab Zürich gibt</h3>
+<div class="scroll"><table>
+<tr><th>Strecke</th><th>Airline</th><th>Frequenz</th><th>Dauer</th><th>Relevant für</th></tr>
+<tr><td><b>Zürich → Tokio Narita</b></td><td>Swiss LX160</td><td>5×/Woche, Mo/Mi/Fr/Sa/So, ab 13:05</td><td>13 h 05</td><td>Optionen D, E</td></tr>
+<tr><td><b>Zürich → Phuket</b></td><td>Edelweiss</td><td>4×/Woche ab Januar</td><td>~11 h</td><td>Optionen A, C, E — Charterbasis</td></tr>
+<tr><td><b>Zürich → Colombo</b></td><td>Edelweiss</td><td>bis 3×/Woche im Winter</td><td>~10 h</td><td>Option B — Sri Lanka</td></tr>
+</table></div>
+<p class="sub">Nach Ho-Chi-Minh-Stadt und Manila gibt es ab Zürich <b>keinen</b> Direktflug. Edelweiss bedient Ho-Chi-Minh-Stadt im Winterflugplan 2026/27 nicht.</p>
+
+<div class="note"><b>Der wichtigste Hebel:</b> Die Edelweiss-Direktflüge nach Phuket und Colombo verändern die Rechnung. Wer Option B fährt und Vietnam streicht, fliegt ab Zürich nonstop nach Colombo statt zweimal umzusteigen — das spart einen ganzen Reisetag und mehrere hundert Franken. Ebenso bei Option A und C: Wer nur zum Törn dazustösst, fliegt direkt nach Phuket.</div>
+
+<h3>Buchungsregeln für diese Reise</h3>
+<div class="scroll"><table>
+<tr><th>Punkt</th><th>Was zu tun ist</th></tr>
+<tr><td><b>Open Jaw buchen</b></td><td>Hin nach A, zurück ab B als <i>ein</i> Multi-City-Ticket. Meist günstiger als zwei One-Ways — und bei Verspätungen umbucht die Airline euch, statt dass ihr auf dem verfallenen Rückflug sitzenbleibt.</td></tr>
+<tr><td><b>Abflugdatum</b></td><td>Der 20. Dezember ist einer der teuersten Abflugtage des Jahres. Zwei bis drei Tage früher (17.–19. Dez) spart erfahrungsgemäss CHF 150–300 pro Person.</td></tr>
+<tr><td><b>Regionalflüge später</b></td><td>Nur die Langstrecke jetzt buchen. Innerasiatische Strecken sind billig und auch kurzfristig verfügbar — und ihr wisst heute noch nicht, ob Urlaub und Charter halten.</td></tr>
+<tr><td><b>Selbstverbindungen</b></td><td>Separat gebuchte Tickets haben keine Umsteigegarantie. Mindestens 4 h Puffer, bei erneuter Gepäckaufgabe eher 5 h. Bei Manila zusätzlich Terminalwechsel einrechnen.</td></tr>
+<tr><td><b>Kite-Gepäck</b></td><td>Boardbags immer vorab online zubuchen. Swiss und Edelweiss nehmen Sportgepäck bis 32 kg als Anmeldung entgegen; bei AirAsia, Cebu Pacific, VietJet und Tigerair ist Übergepäck am Schalter unverhältnismässig teuer.</td></tr>
+<tr><td><b>Japan-Inlandsflüge</b></td><td>JAL Japan Explorer Pass und ANA Experience Japan Fare geben Ausländern stark vergünstigte Inlandsflüge — nur zusammen mit einem internationalen Ticket buchbar. Für Tokio → Ishigaki der grösste Einzelspareffekt der Nordrouten.</td></tr>
+<tr><td><b>Narita ≠ Haneda</b></td><td>Swiss landet in Narita um 09:10, die meisten Ishigaki-Flüge starten in Haneda. Flughafenwechsel dauert rund 1 ½ h — mit Kitegepäck realistisch eine Nacht in Tokio einplanen.</td></tr>
+</table></div>
+
+<h2>Material</h2>
+<p><b>Südrouten (A, B, C):</b> 7 m, 9 m, 12 m deckt 90 % ab. Vietnam und Cuyo laufen auf 7–9, Sri Lanka und der Katamaran auf 12–14. Twintip plus optional Surfboard für die Bulabog-Reefwelle.</p>
+<p><b>Okinawa-Routen (D, E):</b> 7, 9, 12 m plus 3/2-Neopren und Neoprenschuhe wegen Riff. Wichtiger als die Kitegrössen ist das <b>komplette Ersatz-Setup in der Gruppe</b> — auf Ishigaki gibt es weder Shop noch Schule noch Verleih. Wer dort einen Kite zerreisst, fährt nicht mehr.</p>
+<p class="sub">Boardbag-Gebühren bei AirAsia und Cebu Pacific vorab online buchen. Am Schalter wird es teuer.</p>
+
+<h2>Zu entscheiden</h2>
+<p class="sub">Zum Abhaken während der Besprechung.</p>
+<div class="check">
+  <label><input type="checkbox"><span><span class="q">Katamaran: ja oder nein?</span><span class="why">Das ist die Hauptweiche. Bareboat kostet ~2.000–2.900 €/Person und zwingt die Route nach Thailand oder Malaysia. Kein Boot spart Geld und zwei Reisetage.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Neopren akzeptabel?</span><span class="why">Entscheidet zwischen Süd (A–C, durchgehend Boardshorts) und Nord (D–F, 3 bis 5 Wochen im 3/2). Sonne und Wärme über acht Wochen sind ein realer Faktor.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Wer hat Day Skipper/ICC, SRC und Katamaran-Meilen?</span><span class="why">Ohne diese Papiere fallen A, C und E weg. Fehlt nur das SRC, ist das ein Wochenendkurs — aber jetzt, nicht im November.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Gruppengröße final: 4 oder 6?</span><span class="why">Verändert den Bootsanteil um ~800 €/Person und macht die Unterkunftssuche auf Cuyo und Ishigaki deutlich schwerer.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Cuyo oder Kite-Safari?</span><span class="why">Cuyo ist abenteuerlicher und billiger, die skippered Safari ab Coron komfortabler und logistisch sicherer — und die einzige Bootsvariante, die zum Kiten wirklich funktioniert.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Zwei Stationen oder drei?</span><span class="why">D und F setzen auf zwei lange Aufenthalte statt drei kurze. Das spart Flüge und Umzugstage und bringt mehr Zeit aufs Wasser — kostet aber Abwechslung.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Alle Urlaubsanträge durch?</span><span class="why">Weihnachten und Neujahr sind der begehrteste Zeitraum des Jahres. Ohne Freigaben keine Flugbuchung — und ohne Flugbuchung steigen die Preise wöchentlich.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Alternatives Zeitfenster prüfen?</span><span class="why">Mitte Januar bis Mitte März ist kitetechnisch nahezu identisch, aber Urlaub, Flüge und Charter sind erheblich günstiger und leichter zu bekommen.</span></span></label>
+</div>
+
+<footer>
+  Stand: 16. August 2026 · Alle Preise und Saisonangaben sind Richtwerte und vor Buchung beim Anbieter zu prüfen.<br>
+  Quellen u. a.: Muine Kite School, IKSURFMAG, Cuyo Kiteboarding, Margarita Kite School, The Moorings, Yachting Thailand, Philippine Yacht Charter, Kitesurfing Official, Swiss, Edelweiss, FlightConnections, IKO.
+</footer>
+</div>
+
+<script>
+/* ===================== DATEN ===================== */
+var C={vn:"#d97706",kat:"#2563eb",ph:"#0d9488",sl:"#7c3aed",seg:"#64748b",tw:"#dc2626",jp:"#0891b2"};
+
+/* Wiederkehrende Flugabschnitte */
+var FLY={
+ zrhSgn:{s:"Hinflug",r:"Zürich → Ho-Chi-Minh-Stadt (SGN)",p:"CHF 700–1.100",
+   i:"Kein Direktflug ab Zürich. Qatar via Doha, Turkish via Istanbul, Singapore Airlines via Singapur, Emirates via Dubai, Cathay via Hongkong. Kürzeste Gesamtreisezeit rund 14 h 35, via Bangkok im Schnitt 14 h 24."},
+ mnlZrh:{s:"Rückflug",r:"Manila → Zürich",p:"CHF 500–900",
+   i:"Kein Direktflug. Kürzeste Verbindung rund 15 h 50 über Istanbul, Dubai, Doha, Singapur oder Hongkong."},
+ mnlCat:{s:"Regional",r:"Manila → Caticlan oder Kalibo",p:"CHF 50–100",
+   i:"Philippine Airlines und Cebu Pacific, rund 1 h. Caticlan liegt direkt gegenüber von Boracay; Kalibo ist billiger, aber 2 h Bustransfer entfernt."},
+ cuyo:{s:"Weiterreise",r:"Boracay → Cuyo",p:"CHF 40–80 + Fähre",
+   i:"Kein Linienflug. Fähre ab Iloilo oder Puerto Princesa, 10–12 h und unregelmässig. Praktikabler: nach Puerto Princesa fliegen und von dort die Fähre nehmen."},
+ zrhNrt:{s:"Hinflug",r:"Zürich → Tokio Narita",p:"CHF 900–1.500",d:1,
+   i:"<b>Swiss LX160, Direktflug</b>, 13 h 05, fünfmal pro Woche (Mo, Mi, Fr, Sa, So), Abflug 13:05, Ankunft 09:10. Swiss ist die einzige Airline mit Nonstop-Verbindung Zürich–Tokio."},
+ nrtIsg:{s:"Anschluss",r:"Tokio → Ishigaki",p:"CHF 40–200",
+   i:"Ankunft in Narita, Abflug meist ab Haneda — Flughafenwechsel rund 1 ½ h einplanen, besser eine Nacht in Tokio. ANA und JAL fliegen HND → ISG mit der 787 in rund 3 h, 28 Abflüge pro Woche. <b>Mit JAL Japan Explorer Pass oder ANA Experience Japan Fare</b> kostet der Inlandsflug als Ausländer nur einen Bruchteil — nur zusammen mit einem internationalen Ticket buchbar, früh reservieren."},
+ isgMiy:{s:"Regional",r:"Ishigaki → Miyakojima",p:"CHF 50–90",
+   i:"RAC oder JTA, rund 30 Minuten. Fähre gibt es auch, wird im Winter aber häufig wetterbedingt gestrichen."},
+ okaMnl:{s:"Regional",r:"Okinawa → Manila",p:"CHF 280–450",
+   i:"<b>Es gibt keinen Direktflug.</b> Weder ab Naha noch ab Ishigaki. Die schnellste Variante läuft über Taipeh (Tigerair oder China Airlines ab Ishigaki, 1 h 10, danach 2 h nach Manila) — reiner Flughafentransit, kein Aufenthalt in Taiwan. Alternativ zurück über Tokio. Realistisch <b>10 ½ Stunden Gesamtreisezeit</b>, in der Praxis ein voller Reisetag."}
+};
+
+var OPTS=[
+{id:"A",name:"Süd, empfohlen",tag:"Vietnam → Bareboat Phuket → Philippinen",
+ boat:"bareboat",temp:"warm",max:7450,hops:6,costTxt:"5.150 – 7.450 €",
+ legs:[{c:C.vn,d:"20. Dez – 10. Jan",t:"<b>Vietnam</b> — Phan Rang & Mui Ne, 3 Wochen"},
+       {c:C.kat,d:"11. – 25. Jan",t:"<b>Bareboat-Katamaran</b> ab Phuket, 2 Wochen"},
+       {c:C.ph,d:"26. Jan – 14. Feb",t:"<b>Philippinen</b> — Boracay & Cuyo, 3 Wochen"}],
+ pro:"Beste Balance: Peak-Wind in Vietnam, eigener Törn, Amihan-Höhepunkt zum Schluss. Törn liegt nach der Neujahrsspitze.",
+ con:"Zickzack über die Andamanensee — vier Regionalflüge. Der Törn selbst ist zum Kiten Glückssache.",
+ fsum:"CHF 1.560 – 2.630",
+ flights:[FLY.zrhSgn,
+  {s:"Regional",r:"Phan Rang / Cam Ranh → Phuket",p:"CHF 120–200",
+   i:"Via Bangkok oder Singapur (VietJet, Thai, AirAsia), 6–9 h inkl. Umsteigen. <b>Merke:</b> Edelweiss fliegt ab Januar viermal wöchentlich Zürich → Phuket nonstop — wer den Törn separat anreist oder nachrückt, spart das Umsteigen komplett."},
+  {s:"Regional",r:"Phuket → Manila",p:"CHF 150–250",
+   i:"Kein Direktflug. Via Bangkok oder Singapur mit Cebu Pacific, AirAsia oder Philippine Airlines, 7–10 h."},
+  FLY.mnlCat, FLY.cuyo, FLY.mnlZrh]},
+
+{id:"B",name:"Sri Lanka & Kite-Safari",tag:"Vietnam → Kalpitiya → Coron/Cuyo",
+ boat:"crew",temp:"warm",max:8000,hops:5,costTxt:"6.000 – 8.000 €",
+ legs:[{c:C.vn,d:"20. Dez – 12. Jan",t:"<b>Vietnam</b> — Phan Rang, 3½ Wochen"},
+       {c:C.sl,d:"13. Jan – 2. Feb",t:"<b>Sri Lanka</b> — Kalpitiya, 3 Wochen"},
+       {c:C.sl,d:"3. – 14. Feb",t:"<b>Philippinen</b> — Kite-Safari ab Coron + Boracay"}],
+ pro:"Der Katamaran funktioniert hier tatsächlich zum Kiten: Start direkt vom Boot, Tender als Rescue. Kalpitiya ist der entspannte Kontrast zu Vietnam.",
+ con:"Kein Bareboat — ihr segelt nicht selbst. Ein Flug mehr, weiter westlich ausgreifend.",
+ fsum:"CHF 1.710 – 2.870",
+ flights:[FLY.zrhSgn,
+  {s:"Regional",r:"Ho-Chi-Minh-Stadt → Colombo",p:"CHF 200–350",
+   i:"Kein Direktflug. Via Singapur, Kuala Lumpur oder Bangkok, 8–12 h. <b>Alternative, die Geld spart:</b> Edelweiss fliegt bis dreimal wöchentlich Zürich → Colombo nonstop. Wer Vietnam streicht und mit Sri Lanka startet, hat einen Direktflug ab Zürich statt zwei Umstiegen."},
+  {s:"Regional",r:"Colombo → Manila",p:"CHF 250–400",
+   i:"Kein Direktflug. Via Singapur, Kuala Lumpur, Bangkok oder Hongkong, 9–13 h. Der längste Einzelsprung aller sechs Optionen."},
+  {s:"Regional",r:"Manila → Busuanga (Coron)",p:"CHF 60–120",
+   i:"Cebu Pacific, Philippine Airlines und AirSWIFT, rund 1 h. Die Kite-Safari startet und endet in Coron Town."},
+  FLY.mnlZrh]},
+
+{id:"C",name:"Mehr Segeln",tag:"Vietnam → Langkawi–Phuket One-Way → Philippinen",
+ boat:"bareboat",temp:"warm",max:7000,hops:5,costTxt:"5.000 – 7.000 €",
+ legs:[{c:C.vn,d:"20. Dez – 10. Jan",t:"<b>Vietnam</b> — Phan Rang & Mui Ne, 3 Wochen"},
+       {c:C.seg,d:"11. – 25. Jan",t:"<b>Bareboat</b> Langkawi → Phuket, 2 Wochen"},
+       {c:C.ph,d:"26. Jan – 14. Feb",t:"<b>Philippinen</b> — Boracay, 3 Wochen"}],
+ pro:"One-Way-Törn mit mehr Strecke und mehr Wind als das Phuket-Rundrevier. Charter ab ~2.000 €/Woche etwas günstiger. Nur drei Flüge.",
+ con:"One-Way-Gebühr des Charterers. Cuyo fällt aus Zeitgründen weg.",
+ fsum:"CHF 1.530 – 2.570",
+ flights:[FLY.zrhSgn,
+  {s:"Regional",r:"Ho-Chi-Minh-Stadt → Langkawi",p:"CHF 130–220",
+   i:"Via Kuala Lumpur mit Malaysia Airlines, AirAsia oder VietJet, 6–8 h. Langkawi hat einen eigenen Flughafen (LGK) nahe der Marina."},
+  {s:"Regional",r:"Phuket → Manila",p:"CHF 150–250",
+   i:"Der Törn endet in Phuket. Kein Direktflug nach Manila — via Bangkok oder Singapur, 7–10 h. <b>Merke:</b> Edelweiss fliegt ab Januar nonstop Zürich → Phuket, relevant falls jemand nur zum Törn dazustösst."},
+  FLY.mnlCat, FLY.mnlZrh]},
+
+{id:"D",name:"Okinawa & Philippinen",tag:"Ishigaki/Miyakojima → Boracay & Cuyo",
+ boat:"none",temp:"cold",max:6800,hops:7,costTxt:"5.000 – 6.800 €",
+ legs:[{c:C.jp,d:"20. Dez – 15. Jan",t:"<b>Okinawa</b> — Ishigaki & Miyakojima, 3½ Wochen"},
+       {c:C.ph,d:"16. Jan – 14. Feb",t:"<b>Philippinen</b> — Boracay & Cuyo, 4 Wochen"}],
+ pro:"Nur zwei Stationen für acht Wochen: viel Zeit an jedem Ort statt Dauerumzug. Okinawa im Dezember und Januar ist leer, klar und windig, die Philippinen liefern ab Mitte Januar den Amihan-Höhepunkt. Swiss fliegt Tokio nonstop ab Zürich.",
+ con:"<b>Ohne Taiwan fehlt die Brücke.</b> Es gibt keinen Direktflug Okinawa–Manila; die Verbindung dauert über 10 ½ Stunden mit Umstieg in Taipeh oder Tokio. Dazu: Ishigaki hat keine Kite-Shops und keine Schulen, Japan ist die teuerste Etappe, und 3½ Wochen bedeuten durchgehend Neopren.",
+ fsum:"CHF 1.860 – 3.320",
+ flights:[FLY.zrhNrt, FLY.nrtIsg, FLY.isgMiy, FLY.okaMnl, FLY.mnlCat, FLY.cuyo, FLY.mnlZrh]},
+
+{id:"E",name:"Okinawa & Katamaran",tag:"Ishigaki → Bareboat Phuket → Philippinen",
+ boat:"bareboat",temp:"cold",max:8200,hops:8,costTxt:"5.800 – 8.200 €",
+ legs:[{c:C.jp,d:"20. Dez – 8. Jan",t:"<b>Okinawa</b> — Ishigaki & Miyakojima, 2½ Wochen"},
+       {c:C.kat,d:"9. – 23. Jan",t:"<b>Bareboat-Katamaran</b> ab Phuket, 2 Wochen"},
+       {c:C.ph,d:"24. Jan – 14. Feb",t:"<b>Philippinen</b> — Boracay & Cuyo, 3 Wochen"}],
+ pro:"Drei sehr unterschiedliche Kapitel: Starkwind und Neopren im Norden, dann zwei warme Wochen unter Segeln, zum Schluss der Amihan-Peak. Der Törn kommt genau dann, wenn man von der Kälte reif dafür ist.",
+ con:"Der flugintensivste und teuerste Weg. Okinawa nach Phuket führt über Taipeh oder Tokio und Bangkok, danach geht es wieder nach Osten — rund zwei volle Reisetage nur fürs Umsteigen.",
+ fsum:"CHF 2.080 – 3.670",
+ flights:[FLY.zrhNrt, FLY.nrtIsg, FLY.isgMiy,
+  {s:"Regional",r:"Ishigaki → Phuket",p:"CHF 350–550",
+   i:"Kein Direktflug. Über Taipeh und Bangkok oder über Tokio und Singapur, 12–16 h Gesamtreisezeit. Der Rückwärtssprung nach Westen, der diese Option teuer macht."},
+  {s:"Regional",r:"Phuket → Manila",p:"CHF 150–250",
+   i:"Kein Direktflug. Über Bangkok oder Singapur mit Cebu Pacific, AirAsia oder Philippine Airlines, 7–10 h."},
+  FLY.mnlCat, FLY.cuyo, FLY.mnlZrh]},
+
+{id:"F",name:"Vietnam & Philippinen",tag:"Phan Rang → Boracay & Cuyo · durchgehend warm",
+ boat:"none",temp:"warm",max:5200,hops:5,costTxt:"3.800 – 5.200 €",
+ legs:[{c:C.vn,d:"20. Dez – 12. Jan",t:"<b>Vietnam</b> — Phan Rang & Mui Ne, 3½ Wochen"},
+       {c:C.ph,d:"13. Jan – 14. Feb",t:"<b>Philippinen</b> — Boracay & Cuyo, 4½ Wochen"}],
+ pro:"Die günstigste und kompakteste Variante — und die einzige ohne Boot, die durchgehend warm bleibt. Ho-Chi-Minh-Stadt → Manila ist ein Direktflug von 2 h 35, zweimal täglich. Zwei Stationen bedeuten echte Zeit auf dem Wasser statt Dauerumzug, und beide liefern in ihren Wochen Peak-Bedingungen.",
+ con:"Kein Boot und wenig Wechsel in der Kulisse. Wer acht Wochen wechselnde Länder erwartet, wird das vermissen.",
+ fsum:"CHF 1.440 – 2.430",
+ flights:[FLY.zrhSgn,
+  {s:"Regional",r:"Ho-Chi-Minh-Stadt → Manila",p:"CHF 150–250",d:1,
+   i:"<b>Direktflug</b> mit Philippine Airlines, Vietnam Airlines oder Cebu Pacific, 2 h 35, siebzehnmal pro Woche. Der bequemste Regionalsprung aller sechs Optionen."},
+  FLY.mnlCat, FLY.cuyo, FLY.mnlZrh]}
+];
+
+/* ===================== OPTIONSKARTEN ===================== */
+var box=document.getElementById("opts");
+OPTS.forEach(function(o){
+  var d=document.createElement("div");
+  d.className="opt";d.dataset.id=o.id;
+  d.dataset.boat=o.boat;d.dataset.temp=o.temp;d.dataset.max=o.max;d.dataset.hops=o.hops;
+  d.innerHTML='<div class="top"><span class="badge">Option '+o.id+'</span><h3>'+o.name+'</h3></div>'
+   +'<div class="tag">'+o.tag+'</div>'
+   +'<ul class="legs">'+o.legs.map(function(l){
+       return '<li><span class="dot" style="background:'+l.c+'"></span><span>'+l.t+'<span class="dates">'+l.d+'</span></span></li>';}).join("")+'</ul>'
+   +'<div class="kv"><span>Boot: <b>'+({bareboat:"selbst segeln",crew:"mit Crew",none:"keins"})[o.boat]+'</b></span>'
+   +'<span>Flüge: <b>'+o.hops+'</b></span>'
+   +'<span>Neopren: <b>'+(o.temp==="warm"?"nein":"ja")+'</b></span>'
+   +'<span>Kosten: <b>'+o.costTxt+'</b></span></div>'
+   +'<div class="pro"><div><span class="p">+</span> '+o.pro+'</div><div><span class="c">−</span> '+o.con+'</div></div>'
+   +'<details class="fly"><summary><span>Flüge ab Zürich <b>· '+o.flights.length+' Etappen</b></span><b>'+o.fsum+'</b></summary>'
+   +'<ul class="flist">'+o.flights.map(function(f){
+       return '<li><div class="step">'+f.s+'</div><div class="rt"><b>'+f.r+(f.d?' <span class="direct">direkt</span>':'')
+         +'</b><span class="pr">'+f.p+'</span></div><div class="fi">'+f.i+'</div></li>';}).join("")
+   +'</ul></details>';
+  box.appendChild(d);
+});
+
+/* ===================== FILTER ===================== */
+var F={boat:"*",temp:"*",cost:"*",hops:"*"};
+document.querySelectorAll(".chips").forEach(function(g){
+  g.addEventListener("click",function(e){
+    var b=e.target.closest(".chip");if(!b)return;
+    g.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on");F[g.dataset.f]=b.dataset.v;apply();});
+});
+function match(o){
+  if(F.boat!=="*"&&o.dataset.boat!==F.boat)return false;
+  if(F.temp!=="*"&&o.dataset.temp!==F.temp)return false;
+  if(F.cost!=="*"&&+o.dataset.max>+F.cost)return false;
+  if(F.hops==="few"&&+o.dataset.hops>5)return false;
+  return true;
+}
+function apply(){
+  var n=0,ids=[];
+  document.querySelectorAll(".opt").forEach(function(o){
+    if(match(o)){o.classList.remove("dim");n++;ids.push(o.dataset.id);}else{o.classList.add("dim");}});
+  var r=document.getElementById("fresult");
+  var any=F.boat!=="*"||F.temp!=="*"||F.cost!=="*"||F.hops!=="*";
+  if(!any){r.innerHTML="Alle sechs Optionen im Blick. Kriterien auswählen, um einzugrenzen.";return;}
+  var budget=F.cost!=="*"?' Preisfilter zeigt alles, was <b>höchstens '+(+F.cost).toLocaleString("de-DE")+' €</b> pro Person kostet.':"";
+  r.innerHTML=n?("<b>"+n+" von 6 Optionen passen: "+ids.join(", ")+"</b>"+budget+
+      '<button class="reset" id="rs">zurücksetzen</button>')
+    :('<b>Keine Option erfüllt alle Kriterien.</b> Meist ist es die Kombination aus „selbst segeln" und „wenige Flüge" — oder ein Budgetdeckel, den nur Option F unterschreitet.'+
+      '<button class="reset" id="rs">zurücksetzen</button>');
+  var rs=document.getElementById("rs");
+  if(rs)rs.onclick=function(){F={boat:"*",temp:"*",cost:"*",hops:"*"};
+    document.querySelectorAll(".chips").forEach(function(g){
+      g.querySelectorAll(".chip").forEach(function(x){x.classList.toggle("on",x.dataset.v==="*");});});
+    apply();};
+}
+apply();
+
+/* ===================== VERGLEICHSTABELLE ===================== */
+(function(){
+  var rows=[["","Boot","Neopren","Regionalflüge","Kosten/Person","Katamaran-Etappe","Stärkster Wind"]];
+  var t=document.getElementById("cmp");
+  var head="<tr><th>Kriterium</th>"+OPTS.map(function(o){return "<th>"+o.id+"</th>";}).join("")+"</tr>";
+  function row(label,fn){return "<tr><td><b>"+label+"</b></td>"+OPTS.map(function(o){return "<td>"+fn(o)+"</td>";}).join("")+"</tr>";}
+  t.innerHTML=head
+   +row("Kurzform",function(o){return o.name;})
+   +row("Boot",function(o){return {bareboat:'<span class="yes">selbst segeln</span>',crew:"mit Crew",none:'<span class="no">keins</span>'}[o.boat];})
+   +row("Neopren nötig",function(o){return o.temp==="warm"?'<span class="no">nein</span>':"ja";})
+   +row("Regionalflüge",function(o){return o.hops;})
+   +row("Kosten/Person",function(o){return '<span class="num">'+o.costTxt+'</span>';})
+   +row("Flüge ab ZRH",function(o){return '<span class="num">'+o.fsum+'</span>';})
+   +row("Direktflug ab ZRH?",function(o){return {A:"nur nach Phuket",B:"nur nach Colombo",C:"nur nach Phuket",D:'<span class="yes">ja, Tokio</span>',E:'<span class="yes">ja, Tokio</span>',F:'<span class="no">nein</span>'}[o.id];})
+   +row("Stationen",function(o){return o.legs.length;})
+   +row("Stärkster Spot",function(o){return {A:"Phan Rang / Cuyo",B:"Phan Rang / Cuyo",C:"Phan Rang",D:"Ishigaki / Cuyo",E:"Ishigaki / Cuyo",F:"Phan Rang / Cuyo"}[o.id];})
+   +row("Hauptrisiko",function(o){return {A:"Törn ohne Wind",B:"kein Bareboat",C:"Cuyo entfällt",D:"Anschluss Okinawa–Manila",E:"Zeitdruck, Kosten",F:"wenig Abwechslung"}[o.id];});
+})();
+
+/* ===================== KARTE ===================== */
+(function(){
+var SVG="http://www.w3.org/2000/svg",svg=document.getElementById("map");
+var S=11.9,OX=6,OY=10;
+function px(lo,la){return [OX+(lo-76)*S,OY+(28-la)*S];}
+function el(n,a){var e=document.createElementNS(SVG,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+function line(p){return p.map(function(q,i){var r=px(q[0],q[1]);return (i?"L":"M")+r[0].toFixed(1)+" "+r[1].toFixed(1);}).join(" ");}
+function poly(p){return line(p)+" Z";}
+
+var LAND=[
+[[98,28],[104,28],[110,28],[117,28],[121.5,28],[121.9,25.3],[121,25.1],[120.1,23.1],[120.2,22.3],[121,22.6],[121.6,24.3],[121.9,25.3],[121.5,28],[117,28],[112,25],[110,21.5],[108.9,21.5],[108,21.5],[106.7,20.8],[106.5,19.5],[105.8,18.8],[106.5,17.5],[108.2,16.1],[109.2,13.8],[109.4,12.2],[109.1,11.3],[108.3,10.9],[106.8,10.4],[105,9],[104.8,10.2],[103.5,10.6],[102.5,12],[101,12.6],[100.5,13.5],[99.9,12.6],[99.3,10.5],[99.5,9],[100.2,7],[101.5,6],[103.5,4.5],[104,1.6],[103,1.4],[101.5,2.5],[100.4,5.4],[99.8,6.4],[98.4,7.9],[98.5,9.5],[98.2,12.5],[97.8,14.5],[97.5,16.5],[96.5,16],[95.2,15.9],[94.5,17.5],[94.2,19],[93,20.5],[92.3,21.5],[91,22.5],[90,21.8],[88.5,21.7],[87,21.5],[85,19.5],[82,17],[80.3,15.9],[80.2,13.1],[79.8,10.3],[79.2,9.2],[78.1,8.4],[77.5,8.1],[76.5,9.5],[76,12],[76,28]],
+[[80.2,9.85],[81.2,8.6],[81.9,7.3],[81.7,6.4],[80.9,5.95],[80.1,6],[79.7,6.9],[79.7,8],[79.9,9]],
+[[121,25.1],[121.9,25.3],[121.6,24.3],[121,22.6],[120.2,22.3],[120.1,23.1],[120.6,24.2]],
+[[95.3,5.6],[97.5,4.2],[99.5,3],[101.5,1.5],[103.5,.5],[104.5,-1],[105.9,-2],[105.8,-3.5],[105,-5.5],[103.5,-5.3],[102,-4.3],[100.3,-2.9],[98.5,-1],[97,1],[95.5,3.5]],
+[[109.6,2],[111,1.4],[113,3],[115,4.8],[117.2,6.9],[118.6,5.9],[118,4.2],[117.5,3],[117.5,1],[116.5,-1],[117,-2.5],[116,-3.6],[114.6,-4.2],[113,-3.2],[111,-3],[110.2,-1.8],[109,-.5],[108.8,.8]],
+[[105.2,-6],[108,-6.2],[110.5,-6.4],[112.7,-7],[114.4,-8],[113,-8.3],[110,-8.1],[107,-7.7],[105.5,-6.9]],
+[[119.8,1.4],[121.5,1],[123.5,.8],[125,1.6],[125.2,1],[123.5,0],[121.3,-.6],[121.5,-1.9],[123,-2.5],[122.5,-3.3],[121,-2.6],[120.5,-2.6],[120.6,-5.6],[119.5,-5.6],[119.3,-3.5],[118.8,-.9]],
+[[120.4,18.3],[121.9,18.6],[122.3,17.5],[121.6,16],[122.5,14.8],[124.2,14],[123.3,13.4],[124.2,12.5],[123.2,12.5],[122,13.8],[120.9,14],[120.6,14.6],[119.8,16.3]],
+[[120.5,13.5],[121.5,13.4],[121.5,12.4],[120.9,12.2],[120.4,12.9]],
+[[119.9,11.6],[119.3,10.8],[118,9.4],[117.2,8.3],[117,8.6],[118.4,9.9],[119.3,11.2]],
+[[119.9,12.35],[120.5,12.25],[120.55,11.85],[120,11.85]],
+[[121.9,11.8],[123.1,11.6],[123.2,10.5],[122,10.4]],
+[[123.1,10.9],[123.5,10],[123.3,9.1],[122.5,9.9]],
+[[124,11.3],[124.1,10.2],[123.5,9.5],[123.6,10.5]],
+[[124.3,12.5],[125.6,12.5],[125.8,11],[125,10.3],[124.6,11.2]],
+[[123.9,9.8],[125.5,9.8],[126.6,7.3],[126.2,6],[125.4,5.6],[124.3,6.2],[123,7],[121.9,6.9],[122.1,7.7],[123.5,8.2]],
+[[119.5,23.6],[119.7,23.55],[119.68,23.3],[119.45,23.35]],
+[[127.9,26.7],[128.35,26.75],[128.25,26.4],[127.75,26.2],[127.65,26.1],[127.7,26.35]],
+[[125.15,24.9],[125.5,24.85],[125.45,24.7],[125.15,24.7]],
+[[124.1,24.6],[124.35,24.5],[124.3,24.3],[124.05,24.35]],
+[[108.7,20],[110.6,20.1],[111,19.6],[110.4,18.4],[108.9,18.5],[108.6,19.3]]
+];
+
+var SP={
+ hcmc:{ll:[106.66,10.76],n:"HCMC",c:"#9ca3af",t:"<b>Ho-Chi-Minh-Stadt</b><br>Ankunft aus Deutschland, weiter per Bahn oder Transfer nach Phan Rang (~5 h) bzw. Mui Ne (~4 h).<span class='meta'>Umsteigepunkt</span>"},
+ phanrang:{ll:[108.99,11.56],n:"Phan Rang",c:C.vn,t:"<b>Phan Rang, Vietnam</b><br>Flachwasser-Lagune My Hoa, 18–30 kn, Böen bis 40+. Weniger Crowd als Mui Ne.<span class='meta'>Luft 24–30 °C · Wasser 25–26 °C · kein Neopren · 7–9 m</span>"},
+ muine:{ll:[108.23,10.93],n:"Mui Ne",c:C.vn,t:"<b>Mui Ne</b><br>Infrastruktur, Wellen, Nightlife. Gut zum Ankommen in Woche 1. Silvester ausgebucht — bis Oktober fixieren.<span class='meta'>Luft 24–30 °C · kein Neopren</span>"},
+ phuket:{ll:[98.30,7.89],n:"Phuket",c:C.kat,t:"<b>Phuket — Charterbasis</b><br>Größte Bareboat-Flotte Asiens. Verlangt Day Skipper/ICC + SRC + Sailing-Resume mit 2–3 Wochen Skippererfahrung.<span class='meta'>Lagoon 46 · 6.000–9.000 € für 2 Wochen</span>"},
+ phangnga:{ll:[98.55,8.35],n:"Phang Nga",c:C.kat,t:"<b>Phang Nga Bay</b><br>Kalksteintürme, geschützte Ankerplätze, klares Wasser. NE-Monsun 5–20 kn — schönes Segeln, zum Kiten Glückssache. Big Kite mitnehmen.<span class='meta'>Törn-Etappe 1–2</span>"},
+ lanta:{ll:[99.08,7.53],n:"Koh Lanta",c:C.kat,t:"<b>Koh Lanta / Koh Rok</b><br>Südlicher Wendepunkt des Törns. Ruhigere Ankerbuchten als Phi Phi.<span class='meta'>Törn-Etappe 4–5</span>"},
+ langkawi:{ll:[99.73,6.35],n:"Langkawi",c:C.seg,t:"<b>Langkawi, Malaysia</b><br>Alternative Charterbasis ab ~2.000 €/Woche, 10–20 kn NE. One-Way-Törn nach Phuket möglich — Überführungsgebühr beachten.<span class='meta'>Option C</span>"},
+ kalpitiya:{ll:[79.76,8.23],n:"Kalpitiya",c:C.sl,t:"<b>Kalpitiya, Sri Lanka</b><br>Januar und Februar am verlässlichsten: rund 25 Windtage pro Monat, 16–20 kn NE, riesige Flachwasser-Lagunen, kein Neopren.<span class='meta'>Luft 27–31 °C · 12–14 m Kites</span>"},
+ manila:{ll:[120.98,14.51],n:"Manila",c:"#9ca3af",t:"<b>Manila</b><br>Drehkreuz für alle Philippinen-Verbindungen: Caticlan (Boracay), Iloilo, Puerto Princesa.<span class='meta'>Umsteigepunkt</span>"},
+ boracay:{ll:[121.93,11.97],n:"Boracay",c:C.ph,t:"<b>Boracay — Bulabog Beach</b><br>Amihan 15–25 kn, teils über 30, side-onshore. Flachwasser bei Ebbe, Reef-Welle draußen. Beste Sessions morgens.<span class='meta'>Luft 25–30 °C · Wasser 27 °C · kein Neopren</span>"},
+ cuyo:{ll:[120.90,10.85],n:"Cuyo",c:C.ph,t:"<b>Cuyo Island — Capusan Beach</b><br>20–35 kn fast täglich im Jan/Feb, kaum Menschen. Preis: Fähre 10–12 h ab Iloilo oder Puerto Princesa, sehr wenige Betten, keine Traumaversorgung vor Ort.<span class='meta'>Der Höhepunkt jeder Südroute · 7–9 m</span>"},
+ coron:{ll:[120.20,12.00],n:"Coron",c:C.sl,t:"<b>Coron — Kite-Safari</b><br>44-ft-Katamaran mit Crew, bis 8 Gäste, 8 Tage all-inclusive. Kite-Start direkt vom Boot, Tender als Rescue. Voraussetzung IKO Level 2+.<span class='meta'>1.800–2.500 € pro Person</span>"},
+ ishigaki:{ll:[124.16,24.40],n:"Ishigaki",c:C.jp,t:"<b>Ishigaki, Okinawa</b><br>N-Wind bis 30 kn von Oktober bis Anfang März, Jan/Feb gut. <b>Keine Kite-Shops, keine Schulen, kein Verleih</b> — komplettes eigenes Material plus Ersatzteile und Mietwagen nötig.<span class='meta'>Luft 15–21 °C · Wasser 22–23 °C · 3/2</span>"},
+ miyako:{ll:[125.30,24.78],n:"Miyakojima",c:C.jp,t:"<b>Miyakojima</b><br>Flachwasser-Lagunen (Imgya, Yoshino) und der 7 km lange Yonaha Maehama. Etwas mehr Infrastruktur als Ishigaki.<span class='meta'>Luft 15–21 °C · 3/2</span>"},
+ taipei:{ll:[121.53,25.05],n:"Taipeh",c:"#9ca3af",t:"<b>Taipeh — nur Transit</b><br>Kein Aufenthalt, aber der einzige kurze Weg von den Ryukyus nach Süden: Ishigaki → Taipeh ist ein Direktflug von 1 h 10, weiter nach Manila noch einmal 2 h. Ohne diesen Umstieg dauert Okinawa–Manila über Tokio deutlich länger.<span class='meta'>Umsteigepunkt · kein Übernachten eingeplant</span>"}
+};
+
+var R={
+A:{legs:[{t:"s",c:C.kat,p:[[98.30,7.89],[98.55,8.35],[98.60,8.10],[98.84,8.01],[98.77,7.74],[99.08,7.53],[99.07,7.22],[98.30,7.89]]},
+   {t:"f",c:C.vn,a:[106.66,10.76],b:[108.99,11.56],k:.12},{t:"f",c:C.kat,a:[108.99,11.56],b:[98.30,7.89],k:.16},
+   {t:"f",c:C.ph,a:[98.30,7.89],b:[120.98,14.51],k:.13},{t:"f",c:C.ph,a:[120.98,14.51],b:[121.93,11.97],k:.2},{t:"f",c:C.ph,a:[121.93,11.97],b:[120.90,10.85],k:.25}],
+   s:["hcmc","muine","phanrang","phuket","phangnga","lanta","manila","boracay","cuyo"],
+   l:[["Vietnam · 3 Wo",C.vn],["Bareboat-Kat · 2 Wo",C.kat],["Philippinen · 3 Wo",C.ph]]},
+B:{legs:[{t:"f",c:C.vn,a:[106.66,10.76],b:[108.99,11.56],k:.12},{t:"f",c:C.sl,a:[108.99,11.56],b:[79.76,8.23],k:.14},
+   {t:"f",c:C.sl,a:[79.76,8.23],b:[120.98,14.51],k:.13},{t:"f",c:C.sl,a:[120.98,14.51],b:[120.20,12.00],k:.25},
+   {t:"s",c:C.sl,p:[[120.20,12.00],[120.90,10.85],[121.93,11.97],[120.20,12.00]]}],
+   s:["hcmc","phanrang","kalpitiya","manila","coron","cuyo","boracay"],
+   l:[["Vietnam · 3½ Wo",C.vn],["Sri Lanka + Kite-Safari",C.sl]]},
+C:{legs:[{t:"f",c:C.vn,a:[106.66,10.76],b:[108.99,11.56],k:.12},{t:"f",c:C.seg,a:[108.99,11.56],b:[99.73,6.35],k:.16},
+   {t:"s",c:C.seg,p:[[99.73,6.35],[99.30,6.60],[98.80,7.30],[98.30,7.89],[98.55,8.35],[98.84,8.01],[98.77,7.74]]},
+   {t:"f",c:C.ph,a:[98.30,7.89],b:[120.98,14.51],k:.13},{t:"f",c:C.ph,a:[120.98,14.51],b:[121.93,11.97],k:.2}],
+   s:["hcmc","phanrang","langkawi","phuket","manila","boracay"],
+   l:[["Vietnam",C.vn],["Bareboat Langkawi → Phuket",C.seg],["Philippinen",C.ph]]},
+D:{legs:[{t:"s",c:C.jp,p:[[124.16,24.40],[125.30,24.78]]},
+   {t:"f",c:C.ph,a:[124.16,24.40],b:[121.53,25.05],k:.14},
+   {t:"f",c:C.ph,a:[121.53,25.05],b:[120.98,14.51],k:.16},
+   {t:"f",c:C.ph,a:[120.98,14.51],b:[121.93,11.97],k:.2},{t:"f",c:C.ph,a:[121.93,11.97],b:[120.90,10.85],k:.25}],
+   s:["ishigaki","miyako","taipei","manila","boracay","cuyo"],
+   l:[["Okinawa · 3½ Wo",C.jp],["Philippinen · 4 Wo",C.ph],["Taipeh = reiner Transit","#9ca3af"]]},
+E:{legs:[{t:"s",c:C.jp,p:[[124.16,24.40],[125.30,24.78]]},
+   {t:"f",c:C.kat,a:[124.16,24.40],b:[98.30,7.89],k:.11},
+   {t:"s",c:C.kat,p:[[98.30,7.89],[98.55,8.35],[98.60,8.10],[98.84,8.01],[98.77,7.74],[99.08,7.53],[98.30,7.89]]},
+   {t:"f",c:C.ph,a:[98.30,7.89],b:[120.98,14.51],k:.13},{t:"f",c:C.ph,a:[120.98,14.51],b:[121.93,11.97],k:.2},{t:"f",c:C.ph,a:[121.93,11.97],b:[120.90,10.85],k:.25}],
+   s:["ishigaki","miyako","phuket","phangnga","lanta","manila","boracay","cuyo"],
+   l:[["Okinawa · 2½ Wo",C.jp],["Bareboat-Kat · 2 Wo",C.kat],["Philippinen · 3 Wo",C.ph]]},
+F:{legs:[{t:"f",c:C.vn,a:[106.66,10.76],b:[108.99,11.56],k:.12},
+   {t:"f",c:C.ph,a:[106.66,10.76],b:[120.98,14.51],k:.14},
+   {t:"f",c:C.ph,a:[120.98,14.51],b:[121.93,11.97],k:.2},{t:"f",c:C.ph,a:[121.93,11.97],b:[120.90,10.85],k:.25}],
+   s:["hcmc","phanrang","muine","manila","boracay","cuyo"],
+   l:[["Vietnam · 3½ Wo",C.vn],["Philippinen · 4½ Wo",C.ph]]}
+};
+
+var base=el("g",{});svg.appendChild(base);
+base.appendChild(el("rect",{x:0,y:0,width:700,height:560,fill:"#e8eef2"}));
+LAND.forEach(function(p){base.appendChild(el("path",{d:poly(p),fill:"#dfdcd5",stroke:"#c9c6bf","stroke-width":.8,"stroke-linejoin":"round"}));});
+[["Vietnam",107.3,14.5],["Thailand",100.8,15.5],["Philippinen",126,15.8],["Malaysia",112.5,3.4],["Indonesien",103.5,-4.2],["Sri Lanka",83,7.4],["Indien",79,17],["China",112,26.4],["Taiwan",122.6,23.4],["Japan",128.6,25.3]].forEach(function(x){
+  var q=px(x[1],x[2]),e=el("text",{x:q[0],y:q[1],"font-size":10,fill:"#9b9891","text-anchor":"middle","letter-spacing":.4});
+  e.textContent=x[0];base.appendChild(e);});
+
+var rg=el("g",{});svg.appendChild(rg);var sg=el("g",{});svg.appendChild(sg);
+var det=document.getElementById("detail"),leg=document.getElementById("legend");
+function arc(a,b,k){var p=px(a[0],a[1]),q=px(b[0],b[1]),mx=(p[0]+q[0])/2,my=(p[1]+q[1])/2,dx=q[0]-p[0],dy=q[1]-p[1];
+  return "M"+p[0]+" "+p[1]+" Q"+(mx-dy*k)+" "+(my+dx*k)+" "+q[0]+" "+q[1];}
+var LEFT=["cuyo","langkawi","phuket","kalpitiya","muine","ishigaki"];
+
+function drawMap(k){
+  rg.innerHTML="";sg.innerHTML="";var o=R[k];
+  o.legs.forEach(function(L){
+    rg.appendChild(el("path",{d:L.t==="f"?arc(L.a,L.b,L.k):line(L.p),fill:"none",stroke:L.c,
+      "stroke-width":L.t==="f"?2:2.6,"stroke-linecap":"round","stroke-dasharray":L.t==="f"?"5 4":"none",opacity:.9}));});
+  o.s.forEach(function(id){
+    var s=SP[id],q=px(s.ll[0],s.ll[1]),g=el("g",{"class":"node",tabindex:"0",role:"button","aria-label":s.n});
+    g.appendChild(el("circle",{cx:q[0],cy:q[1],r:11,"class":"hit"}));
+    g.appendChild(el("circle",{cx:q[0],cy:q[1],r:4.6,fill:s.c,stroke:"#fff","stroke-width":1.6}));
+    var lf=LEFT.indexOf(id)>=0,t=el("text",{x:q[0]+(lf?-8:8),y:q[1]+3.4,"font-size":10.5,"font-weight":600,
+      fill:"#3f3d39","text-anchor":lf?"end":"start"});
+    t.textContent=s.n;g.appendChild(t);
+    function show(){det.innerHTML=s.t;}
+    g.addEventListener("click",show);g.addEventListener("mouseenter",show);
+    g.addEventListener("keydown",function(e){if(e.key==="Enter")show();});
+    sg.appendChild(g);});
+  leg.innerHTML=o.l.map(function(x){return '<span class="k"><i style="background:'+x[1]+'"></i>'+x[0]+'</span>';}).join("")
+    +'<span class="k"><i style="background:#9b9891"></i>durchgezogen = Boot oder Landweg · gestrichelt = Flug</span>';
+  det.innerHTML='<span class="sub">Auf einen Punkt tippen für Wind, Temperatur und Fallstricke.</span>';
+}
+
+var tabs=document.getElementById("maptabs");
+OPTS.forEach(function(o,i){
+  var b=document.createElement("button");
+  b.className="tab"+(i?"":" on");b.textContent=o.id+" · "+o.name;b.dataset.r=o.id;
+  b.onclick=function(){tabs.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on");drawMap(o.id);};
+  tabs.appendChild(b);
+});
+drawMap("A");
+})();
+</script>
+</body>
+</html>
