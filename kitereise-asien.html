@@ -84,8 +84,77 @@ td.num{white-space:nowrap}
 .check .q{font-weight:600;display:block}
 .check .why{font-size:12.5px;color:var(--ink3);display:block;margin-top:1px;font-weight:400;text-decoration:none!important}
 
+.sleep table{margin-top:8px}
+.sleep .pick{font-weight:640}
+
+details.acc{border:1px solid var(--line);border-radius:10px;background:var(--card);margin-top:12px}
+details.acc>summary{cursor:pointer;list-style:none;padding:12px 16px;display:flex;justify-content:space-between;
+  gap:12px;align-items:baseline;font-size:14px;font-weight:640;color:var(--ink)}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"▾";color:var(--ink4);font-size:12px;flex:none;margin-left:auto}
+details.acc[open]>summary::after{content:"▴"}
+details.acc[open]>summary{border-bottom:1px solid var(--line2)}
+details.acc>summary .hint{font-weight:400;font-size:12.5px;color:var(--ink3)}
+details.acc .body{padding:2px 16px 16px}
+details.acc .body>table{margin-top:10px;border:none;border-radius:0}
+details.acc .body>.scroll>table{margin-top:10px;border-left:none;border-right:none;border-radius:0}
+details.acc .body>p:first-child{margin-top:10px}
+.stage details.acc{background:var(--bg)}
+.tagx{font-size:10.5px;font-weight:700;letter-spacing:.4px;padding:2px 7px;border-radius:4px;background:#e7f4ea;color:#15803d;margin-left:6px;white-space:nowrap}
+
 footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink4)}
-@media print{body{background:#fff;font-size:11pt}.stage{break-inside:avoid}h2{margin-top:26px}}
+details.warn{border-left:3px solid var(--warn);background:var(--warnbg);border-radius:0 8px 8px 0;margin:16px 0}
+details.warn>summary{cursor:pointer;list-style:none;padding:11px 16px;font-size:13.5px;font-weight:640;
+  color:var(--warn);display:flex;gap:10px;align-items:baseline;line-height:1.45}
+details.warn>summary::-webkit-details-marker{display:none}
+details.warn>summary .ic{flex:none;width:16px;height:16px;border-radius:50%;background:var(--warn);color:var(--warnbg);
+  font-size:11px;font-weight:700;text-align:center;line-height:16px;align-self:flex-start;margin-top:2px}
+details.warn>summary::after{content:"▾";margin-left:auto;font-size:11px;opacity:.55;flex:none;align-self:flex-start;margin-top:3px}
+details.warn[open]>summary::after{content:"▴"}
+details.warn .body{padding:0 16px 14px 42px;font-size:13.5px;color:var(--ink2);line-height:1.55}
+details.warn .body b{color:var(--warn)}
+
+.toggleall{font:inherit;font-size:12.5px;padding:6px 13px;border-radius:7px;cursor:pointer;margin-top:14px;
+  background:var(--card);color:var(--ink3);border:1px solid var(--line)}
+.toggleall:hover{border-color:var(--ink4);color:var(--ink)}
+
+@media (max-width:620px){
+  body{font-size:14.5px}
+  .wrap{padding:0 15px 60px}
+  h1{font-size:24px}
+  h2{font-size:18px;margin:38px 0 6px}
+  .hero .wrap{padding-top:24px;padding-bottom:20px}
+  .facts{gap:14px 20px}
+  /* Zeitstreifen untereinander statt nebeneinander — sonst sind die Blöcke unlesbar schmal */
+  .strip{flex-direction:column;gap:3px}
+  .strip div{padding:8px 12px;border-radius:6px;white-space:normal}
+  .stage{padding:15px 15px}
+  .stage h3{font-size:17px}
+  .sleep table,.scroll table{font-size:12.8px}
+  th,td{padding:8px 10px}
+  details.acc>summary{flex-wrap:wrap;padding:11px 13px}
+  details.acc>summary .hint{flex-basis:100%}
+  details.acc .body{padding:2px 13px 14px}
+  details.warn>summary{padding:10px 13px}
+  details.warn .body{padding:0 13px 12px 39px}
+  .legend{gap:8px 12px;font-size:11.5px}
+  .detail{font-size:13px;padding:11px 13px}
+  .check{padding:4px 15px}
+  .toggleall{width:100%}
+}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .stage{break-inside:avoid}
+  h2{margin-top:26px}
+  .toggleall{display:none}
+  details.acc{border:none;break-inside:avoid}
+  details.acc>summary{padding:0;font-size:13pt;border:none}
+  details.acc>summary::after{content:""}
+  details.acc .body{padding:0}
+  details.warn{break-inside:avoid}
+  details.warn>summary::after{content:""}
+}
 </style>
 </head>
 <body>
@@ -93,14 +162,15 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 <header class="hero"><div class="wrap">
   <div class="kicker">Entschieden · Asien · Optionen D + F zusammengeführt</div>
   <h1>Okinawa → Vietnam → Philippinen</h1>
-  <p class="sub">20. Dezember 2026 bis 14. Februar 2027 · 57 Tage · kein Boot · Fokus auf leere Spots</p>
+  <p class="sub">20. Dezember 2026 bis 14. Februar 2027 · 57 Tage · Fokus auf leere Spots</p>
   <div class="facts">
     <div class="fact"><b>Etappen</b>3 Länder, Nord nach Süd</div>
     <div class="fact"><b>Gruppe</b>3–6 Personen</div>
     <div class="fact"><b>Budget/Person</b>4.000–6.000 € ohne Flug</div>
-    <div class="fact"><b>Flüge ab Zürich</b>CHF 2.060–3.670</div>
+    <div class="fact"><b>Flüge</b>CHF 2.100–3.750 ab Zürich<br>vergleichbar ab München</div>
     <div class="fact"><b>Optional</b>+29 Tage bis 15. März für zwei</div>
   </div>
+  <button class="toggleall" id="toggleall">Alle Details aufklappen</button>
   <div class="strip">
     <div style="background:#0891b2;flex:20">Okinawa<span>20. Dez – 8. Jan · 20 Tage</span></div>
     <div style="background:#d97706;flex:19">Vietnam<span>9. – 27. Jan · 19 Tage</span></div>
@@ -111,17 +181,24 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <div class="wrap">
 
+<h2 style="margin-top:34px">Die Route auf einen Blick</h2>
+<p class="sub">Okinawa → Vietnam → Philippinen, von Nord nach Süd. Punkte antippen für Wind, Andrang und Anreise.</p>
+<div class="mapwrap"><svg id="map" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reiseroute Okinawa, Vietnam, Philippinen"></svg></div>
+<div class="legend" id="legend"></div>
+<div class="detail" id="detail"></div>
+
 <h2>Was diese Route ausmacht</h2>
 <p>Eine <b>Linie von Nord nach Süd</b>, auf der die Temperatur stetig steigt: Start im 3/2-Neopren auf Ishigaki, Ende in Boardshorts auf Cuyo. Drei Länder, kein Rückwärtssprung, und in jedem Monat der Spot, der gerade seine beste Zeit hat — Okinawa im Dezember, Vietnam im Januar, der Amihan auf den Philippinen im Februar.</p>
 <p>Der zweite Leitgedanke ist der Verzicht auf die bekannten Namen. <b>Bulabog auf Boracay und Mui Ne sind bewusst keine Basis</b>, sondern nur Durchgangs- und Versorgungsstationen. Gefahren wird an Spots, an denen ihr die meiste Zeit allein oder fast allein seid.</p>
 
-<div class="note good"><b>Ohne Boot wird vieles einfacher.</b> Keine Segelscheine, keine Kaution, keine festen Übernahmetermine — und rund 2.000–2.900 € pro Person weniger. Dafür ist das Budget frei für das, was hier tatsächlich Wind bringt: Mietwagen auf Ishigaki, Bootstransfers, ein paar Nächte mehr auf Cuyo.</div>
+<div class="note good"><b>Das Budget hat Luft.</b> Mit 4.000–6.000 € pro Person ohne Flug liegt die Route deutlich unter dem gesteckten Rahmen. Der Spielraum geht dorthin, wo er hier tatsächlich Wind bringt: Mietwagen auf Ishigaki und Miyakojima, die Bootstransfers nach Phu Quy und Seco, und ein paar Nächte mehr auf Cuyo.</div>
 
-<h3>Andrang an den gewählten Spots</h3>
+<details class="acc"><summary>Andrang an den gewählten Spots <span class="hint">6 leere Spots, 2 bewusste Ausnahmen</span></summary>
+<div class="body">
 <div class="scroll"><table>
 <tr><th>Spot</th><th>Andrang</th><th>Warum es dort leer ist — oder eben nicht</th></tr>
-<tr><td><b>Akaishi, Ishigaki</b> 🇯🇵</td><td><span class="dotlvl" style="background:#15803d"></span>sehr niedrig</td><td>Riff-Lagune über dutzende Kilometer Küste, aber keine Schule, kein Shop, kein Verleih auf der Insel. Wer hier fährt, hat alles selbst mitgebracht.</td></tr>
-<tr><td><b>Miyakojima</b> 🇯🇵</td><td><span class="dotlvl" style="background:#15803d"></span>sehr niedrig</td><td>Flachwasser-Lagunen bei Yoshino und Imgya. Ohne Mietwagen kommt man an die Spots nicht heran — das filtert von allein.</td></tr>
+<tr><td><b>Ishigaki</b> 🇯🇵</td><td><span class="dotlvl" style="background:#15803d"></span>sehr niedrig</td><td>Riff-Lagunen über dutzende Kilometer Küste, drei Hauptspots. Mit Sandyfeet gibt es eine Schule mit Leihmaterial, aber keinen Laden für Ersatzteile.</td></tr>
+<tr><td><b>Miyakojima</b> 🇯🇵</td><td><span class="dotlvl" style="background:#15803d"></span>sehr niedrig</td><td>Fünf Spots, die zusammen fast jede Windrichtung abdecken. Ohne Mietwagen kommt man nicht heran — das filtert von allein. M-air ist der einzige Kiteshop der Insel.</td></tr>
 <tr><td><b>Phan Rang / My Hoa</b> 🇻🇳</td><td><span class="dotlvl" style="background:#15803d"></span>niedrig</td><td>100 km nördlich von Mui Ne, kaum ausgebaut. Oft stärker und konstanter als Mui Ne, deutlich günstiger.</td></tr>
 <tr><td><b>Phu Quy Island</b> 🇻🇳</td><td><span class="dotlvl" style="background:#15803d"></span>sehr niedrig</td><td>120 km vor der Küste, 2½ h mit dem Schnellboot. Gilt als einer der windigsten Orte überhaupt — und die Boote fahren nicht immer.</td></tr>
 <tr><td><b>Cuyo</b> 🇵🇭</td><td><span class="dotlvl" style="background:#15803d"></span>sehr niedrig</td><td>Keine Resorts, kein Nightlife. Anreise per Nachtfähre, 12–30 Stunden. Genau das hält die Menge fern.</td></tr>
@@ -129,27 +206,85 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 <tr><td><b>Mui Ne</b> 🇻🇳</td><td><span class="dotlvl" style="background:#b45309"></span>hoch</td><td>Vietnams Kite-Hauptstadt. <b>Nur Versorgungsstopp</b> — hier gibt es Ersatzteile, sonst nichts, was die Route braucht.</td></tr>
 <tr><td><b>Bulabog, Boracay</b> 🇵🇭</td><td><span class="dotlvl" style="background:#b45309"></span>hoch</td><td>Enges Riffbecken voller Schulen. <b>Nur Umsteige- und Versorgungsstopp</b>, ein bis zwei Nächte.</td></tr>
 </table></div>
+</div></details>
 
 <h2>Die drei Etappen</h2>
 
 <div class="stage">
   <div class="sh"><span class="num" style="background:#0891b2">Etappe 1</span><h3>Okinawa — Ishigaki &amp; Miyakojima</h3></div>
-  <div class="when">Sonntag, 20. Dezember 2026 – Freitag, 8. Januar 2027 · 20 Tage · Luft 15–21 °C · Wasser 22–23 °C · 3/2-Neopren · Kites 7–10 m</div>
+  <div class="when">Sonntag, 20. Dezember 2026 – Freitag, 8. Januar 2027 · 20 Tage · Luft 15–20 °C · Wasser ca. 20 °C · 3/2-Neopren · Kites 7–10 m</div>
 
   <div class="spot">
-    <div class="n">Akaishi, Ishigaki<span class="badge b0">sehr leer</span></div>
-    <div class="m">Flachwasser hinter dem Riff · NE-Passat bis 30 kn · Saison Oktober bis Februar</div>
-    <p>Der Hauptspot der Insel: Riff-Lagune mit glattem Wasser, weil das Riff die Welle bricht, und das über dutzende Kilometer Küstenlinie. Ein Revier für sichere Fahrer, die klares Wasser und Ruhe mehr schätzen als Infrastruktur — denn Infrastruktur gibt es hier keine.</p>
-  </div>
-  <div class="spot">
-    <div class="n">Miyakojima<span class="badge b0">sehr leer</span></div>
-    <div class="m">Yoshino-Riff, Imgya-Lagune, Yonaha Maehama · 30 Min Flug ab Ishigaki</div>
-    <p>Etwas mehr Insel-Infrastruktur als Ishigaki und mehrere geschützte Lagunen. Mietwagen ist Pflicht: Man fährt die Insel ab und sucht sich nach Windrichtung den passenden Spot. Alle grossen Vermieter sitzen am Flughafen.</p>
+    <div class="n">Ishigaki<span class="badge b0">sehr leer</span> <span class="badge b1">lokaler Guide vorhanden</span></div>
+    <div class="m">Drei Hauptspots · 15–25 kn im Schnitt · Saison Oktober bis Juni · Luft 20–25 °C</div>
+    <p>Riff-Lagunen mit glattem Wasser, weil das Riff die Welle bricht — draussen vor dem Riff steht dagegen Welle. Die Insel ist in ein bis drei Stunden umrundet, gefahren wird nach Vorhersage mit Auto, Roller oder Rad. Vor Ort gibt es <b>Sandyfeet Kitesurfing</b>, die Unterricht und Leihmaterial anbieten.</p>
   </div>
 
-  <div class="note"><b>Zwei Dinge, die diese Etappe entscheiden.</b><br>
-  <b>1. Kein Kite-Shop, keine Schule, kein Verleih auf Ishigaki.</b> Ein zerrissener Kite bedeutet das Ende eurer Session-Serie. Mindestens ein komplettes Ersatz-Setup in der Gruppe, dazu Bladders, Leinen, Pumpe und Reparaturset.<br>
-  <b>2. Japanisches Neujahr.</b> Vom 31. Dezember bis 3. Januar schliesst in Japan ein Grossteil der Restaurants und Läden. Unterkunft mit Küche buchen, vorher einkaufen, und die Unterkünfte für diesen Zeitraum sehr früh reservieren.</div>
+  <details class="acc"><summary>Die drei Spots auf Ishigaki <span class="hint">Akaishi · Yoshihara · Sakieda</span></summary>
+  <div class="body">
+  <div class="scroll"><table>
+  <tr><th>Spot</th><th>Charakter</th></tr>
+  <tr><td><b>Akaishi</b></td><td>Der bekannteste Spot der Insel. Flachwasser hinter dem Riff, entlang dutzender Kilometer Küstenlinie.</td></tr>
+  <tr><td><b>Yoshihara</b></td><td>Zweiter Hauptspot an der Westküste, ebenfalls Riff-Lagune.</td></tr>
+  <tr><td><b>Sakieda</b></td><td>Bucht im Westen, dritte Ausweichmöglichkeit je nach Windrichtung.</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:8px">Flachwasser gibt es in der Lagune je nach Tide, Welle draussen im offenen Wasser. Neopren wird empfohlen — im Dezember und Januar ist es das Minimum.<br>
+  Sandyfeet Kitesurfing · sandyfeetkite@gmail.com · WhatsApp +81 70 9144 1315 · <a href="https://www.sandyfeetkitesurfing.com/kite-spot">sandyfeetkitesurfing.com — Kite spots</a></p>
+  </div></details>
+  <div class="spot">
+    <div class="n">Miyakojima<span class="badge b0">sehr leer</span> <span class="badge b1">lokaler Guide vorhanden</span></div>
+    <div class="m">Fünf Hauptspots · Mietwagen Pflicht · 30 Min Flug ab Ishigaki</div>
+    <p>Anders als Ishigaki hat Miyakojima einen Kiteshop — <b>M-air</b>, den einzigen der Insel. Er betreibt Schule, Verleih und einen ausführlichen Spot-Guide, und genau der macht die Insel für euch erst richtig nutzbar: Die fünf Spots decken zusammen praktisch jede Windrichtung ab, man fährt sie mit dem Mietwagen nach Vorhersage an. Alle grossen Autovermieter sitzen am Flughafen.</p>
+  </div>
+
+  <details class="warn"><summary><span class="ic">!</span><span>Vor der ersten Session bei M-air melden — das ist keine Höflichkeit, sondern nötig</span></summary>
+<div class="body">Auf Miyakojima gibt es <b>Sperrzonen</b> und viele Spots liegen in Fischereigebieten, in denen die Kitefläche begrenzt ist. M-air bittet ausdrücklich darum, dass Reisende beim ersten Besuch Kontakt aufnehmen und erst nach der Spot-Einweisung aufs Wasser gehen — damit es mit den Fischern keinen Ärger gibt und das Kiten dort auch künftig möglich bleibt.<br>
+  <span class="sub">M-air · Shimoji Yonaha 233, Miyakojima, Okinawa · Tel. 090-1583-6520 · <a href="https://m-air-kite.com/en/recruit.html">m-air-kite.com — Spot guide</a></span></div></details>
+
+  <details class="acc"><summary>Die fünf Spots auf Miyakojima <span class="hint">deckt fast jede Windrichtung ab</span></summary>
+  <div class="body">
+  <div class="scroll"><table>
+  <tr><th>Spot</th><th>Wind</th><th>Gezeiten</th><th>Charakter</th></tr>
+  <tr><td><b>Sanitsuhama</b><br><span class="sub">サニツ浜</span></td><td>N – SO</td><td>um Hochwasser</td><td>Der sicherste Spot der Insel. Watt im Inneren der Yonaha-Bucht, deshalb nicht das berühmte Miyako-Blau, dafür durchgehend flach und weit auslaufend. Sandboden, barfuss möglich. Bei ablaufendem Wasser verschwindet das Wasser ganz.</td></tr>
+  <tr><td><b>Nishihama</b><br><span class="sub">西浜</span></td><td>SW – N</td><td>bei ablaufendem / tiefem Wasser</td><td>Weit, schön und ohne Touristen. Bei Niedrigwasser Butterflachwasser bis weit hinaus — wer das erlebt hat, hält es für einen der besten Spots Japans. Bei Hochwasser steht der Strand unter Wasser, kaum Platz zum Aufbauen. Auf den Sandbänken nehmen tote Korallen und Steine zu: Schuhe sind sicherer.</td></tr>
+  <tr><td><b>Maehama</b><br><span class="sub">前浜</span></td><td>SO – SSW</td><td>jede Tide</td><td>Der berühmte Postkartenstrand. Bei jedem Wasserstand fahrbar, aber sofort tief, kabbelig und mit starker Strömung — nichts für Einsteiger, dafür ideal zum Foilen. Zwei Zugänge (Fischerhafen- und Tokyu-Seite), je nach Wind und Andrang. Im Sommer voller Badegäste, im Winter kein Thema.</td></tr>
+  <tr><td><b>Takano</b><br><span class="sub">高野</span></td><td>N – SO</td><td>Hochwasser meiden</td><td>Genauso schön wie Maehama und Nishihama, und der Spot mit der grössten Chance auf Meeresschildkröten. Bei Hochwasser wird der Strand zu schmal zum Aufbauen. Korallenbruch am Strand, Korallen und Felsen im Wasser — <b>Schuhe empfohlen</b>. Draussen liegt ein Riff, bei ablaufendem Wasser am schönsten.</td></tr>
+  <tr><td><b>Toguchi no Hama</b><br><span class="sub">渡口の浜, Irabu-Insel</span></td><td>SO – SW</td><td>Niedrigwasser: Felsen</td><td>Seit dem Bau der Irabu-Brücke per Auto erreichbar. Es steht Welle, deshalb bei Wave-Ridern beliebt. Schmaler Strand, aber Puderzuckersand wie am Maehama. Um Niedrigwasser tritt am Strandrand Fels hervor — aufpassen.</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:8px">Dazu gibt es Kitestrände auf Irabujima und auf <b>Kurimajima</b>, das sich besonders zum Foilen eignet.</p>
+  </div></details>
+
+  <details class="warn"><summary><span class="ic">!</span><span>Ersatzmaterial selbst mitbringen — und japanisches Neujahr einplanen</span></summary>
+<div class="body"><b>1. Auf beiden Inseln gibt es lokale Ansprechpartner — aber keinen Laden für Ersatzteile.</b> Sandyfeet auf Ishigaki und M-air auf Miyakojima vermieten Material und geben Spot-Einweisungen, das ist eine echte Rückfalloption. Einen zerrissenen eigenen Kite ersetzt das trotzdem nicht: Bringt mindestens ein komplettes Ersatz-Setup in der Gruppe mit, dazu Bladders, Leinen, Pumpe und Reparaturset.<br>
+  <b>2. Japanisches Neujahr.</b> Vom 31. Dezember bis 3. Januar schliesst in Japan ein Grossteil der Restaurants und Läden. Unterkunft mit Küche buchen, vorher einkaufen, und für diesen Zeitraum sehr früh reservieren.</div></details>
+
+  <details class="warn"><summary><span class="ic">!</span><span>Euer Führerschein gilt in Japan nicht — ohne JAF-Übersetzung kein Mietwagen</span></summary>
+  <div class="body">Der <b>internationale Führerschein aus der Schweiz und aus Deutschland ist in Japan ungültig.</b> Japan erkennt nur die Fassung nach dem Genfer Abkommen von 1949 an, und weder die Schweiz noch Deutschland stellen danach aus. Erlaubt ist stattdessen die Kombination <b>Original-Führerschein + Reisepass + amtliche japanische Übersetzung</b>. Ausgestellt wird sie von der Japan Automobile Federation (JAF); andere Übersetzungen werden nicht anerkannt. Seit April 2025 kann man sie nicht mehr persönlich in einer JAF-Filiale beantragen, und der Online-Antrag verlangt eine japanische Adresse — Reisende gehen deshalb über einen Online-Dienst und drucken das Dokument vor Ort im Konbini aus.<br><br>
+  <b>Das betrifft alle, die fahren wollen.</b> Auf Miyakojima ist ein Mietwagen Pflicht, um überhaupt an die Spots zu kommen. Wer keine Übersetzung hat, fährt nicht — und das lässt sich vor Ort nicht mehr reparieren.</div></details>
+
+  <details class="acc"><summary>Anreise <span class="hint">zwei Abflughäfen · beide mit Direktflug nach Tokio</span></summary>
+  <div class="body">
+  <p style="margin-top:10px"><b>Die Gruppe startet an zwei Orten</b> — und die beiden aus München haben dabei die bessere Verbindung, weil ihr Flug in Haneda landet und die Ishigaki-Flüge genau dort abgehen.</p>
+  <div class="scroll"><table>
+  <tr><th>Abschnitt</th><th>Details</th><th>Preis/Person</th></tr>
+  <tr><td><b>Zürich → Tokio Narita</b><br><span class="sub">für die Gruppe</span></td><td><b>Swiss LX160, Direktflug</b>, 13 h 05. Fliegt Mo, Mi, Fr, Sa und So — der <b>20. Dezember ist ein Sonntag</b>, passt also. Abflug 13:05, Ankunft 09:10.</td><td class="num">CHF 900–1.500</td></tr>
+  <tr><td><b>München → Tokio Haneda</b><br><span class="sub">für die beiden aus München</span></td><td><b>Lufthansa oder ANA, Direktflug</b>, rund 12 h 30, <b>täglich</b> — 30 Abflüge pro Woche mit A350 und 787. Abflug zwischen 10:15 (ANA) und 12:45 (Lufthansa), Ankunft am Folgemorgen. <b>Landet in Haneda</b> und spart damit den Flughafenwechsel, den die Zürcher Gruppe hat.</td><td class="num">EUR 850–1.400</td></tr>
+  <tr><td>Tokio → Ishigaki</td><td>Ab <b>Haneda</b> mit ANA oder JAL, 787, gut 3 h, 28 Abflüge pro Woche. Wer in <b>Narita</b> landet, muss vorher rund 1½ h zum Flughafenwechsel einrechnen — mit Kitegepäck realistisch eine Nacht Tokio. Mit <b>JAL Japan Explorer Pass</b> oder <b>ANA Experience Japan Fare</b> kostet der Inlandsflug als Ausländer nur einen Bruchteil, buchbar nur zusammen mit dem internationalen Ticket.</td><td class="num">CHF 40–200</td></tr>
+  <tr><td>Ishigaki → Miyakojima</td><td>RAC oder JTA, rund 30 Minuten. Fähre gibt es auch, fällt im Winter aber häufig wetterbedingt aus.</td><td class="num">CHF 50–90</td></tr>
+  <tr><td><b>Vor Ort</b></td><td><b>Mietwagen auf beiden Inseln.</b> Ishigaki ist in 1–3 h umrundet, auf Miyakojima kommt man ohne Auto gar nicht an die Spots. Alle grossen Vermieter sitzen am jeweiligen Flughafen. <b>Über Neujahr sind die Flotten knapp — jetzt reservieren</b>, und die JAF-Übersetzung nicht vergessen: Sie gilt für Schweizer <i>und</i> deutsche Führerscheine gleichermassen.</td><td class="num">CHF 40–70 / Tag<br>geteilt durch 4</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:10px"><b>Treffpunkt:</b> Beide Flüge landen am Morgen des 21. Dezember. Am einfachsten ist es, sich <b>auf Ishigaki</b> zu treffen und die Inlandsflüge getrennt zu buchen — die Münchner können direkt ab Haneda weiter, die Zürcher brauchen die Nacht in Tokio. Wer unbedingt zusammen fliegen will, nimmt ab München einen Zubringer nach Zürich auf demselben Ticket — handelt sich damit aber den Umweg über Narita ein.</p>
+  </div></details>
+
+  <details class="acc"><summary>Schlafen <span class="hint">3 Häuser · ab CHF 23</span></summary>
+<div class="body">
+    <div class="scroll"><table>
+    <tr><th>Unterkunft</th><th>Lage &amp; Art</th><th>Preis grob</th><th>Warum</th></tr>
+    <tr><td class="pick"><a href="https://g-miyakojima.com/">Guesthouse Miyakojima</a><span class="tagx">erste Wahl</span></td><td>Shimoji Yonaha 233, Miyakojima · umgebautes altes Miyako-Haus im Dorf zwischen Zuckerrohrfeldern</td><td class="num">ca. ¥4.000–7.000<br>≈ CHF 23–40 / Nacht</td><td><b>Gehört demselben Ehepaar wie M-air</b> — gleiche Adresse. Damit wohnt ihr beim Spot-Guide. Nur Einzelzimmer, kein Schlafsaal, dazu Gemeinschaftsküche und -wohnraum. <b>Küche ist über Neujahr Gold wert</b>, wenn draussen alles zu hat. Check-in 14–20 Uhr. <b>Frühbucher-Tarif: 10 % günstiger ab 60 Tage im Voraus</b>, 5 % ab zwei Nächten. Saisonal auch als ganzes Haus mietbar — für eine Vierergruppe prüfen.</td></tr>
+    <tr><td>Pine Shima Resort Coral Fish</td><td>direkt am Akaishi Beach, Ishigaki · Ferienwohnung mit Parkplatz</td><td class="num">CHF 60–120 / Nacht<br>je nach Einheit</td><td>Wenige Schritte vom Hauptspot. Eigener Parkplatz, was mit Mietwagen und Boardbags zählt.</td></tr>
+    <tr><td>Ishigaki-Stadt</td><td>Ferienwohnungen und Business-Hotels</td><td class="num">CHF 40–100 / Nacht</td><td>Die Alternative, wenn ihr eine grössere Wohnung für die Gruppe sucht. Zu den Spots sind es 20–40 Minuten mit dem Auto — bei einer Insel, die man in 1–3 h umrundet, kein Problem.</td></tr>
+    </table></div>
+    <p class="sub">Zwei Unterkünfte für 20 Tage: erst Ishigaki, dann Miyakojima. <b>Die Neujahrswoche jetzt buchen</b> — sie ist in Japan der teuerste und knappste Termin des Jahres, und der Frühbucher-Tarif der Guesthouse läuft 60 Tage vorher aus.</p></div></details>
 </div>
 
 <div class="stage">
@@ -157,10 +292,14 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
   <div class="when">Samstag, 9. – Mittwoch, 27. Januar 2027 · 19 Tage · Luft 24–30 °C · Wasser 25–26 °C · kein Neopren · Kites 7–9 m</div>
 
   <div class="spot">
-    <div class="n">Phan Rang — My Hoa Lagune &amp; Ninh Chu Bay<span class="badge b0">leer</span></div>
-    <div class="m">NE-Monsun November bis April · 25–40 kn im Hochwinter · Ostküste</div>
-    <p>Die Basis der Etappe. Ninh Thuan liegt 100 km nördlich von Mui Ne, fängt den NE-Monsun frontal ab und ist dabei kaum ausgebaut. Der Wind steht hier oft stärker und konstanter als in Mui Ne — ausdrücklich Terrain für fortgeschrittene Fahrer. My Hoa ist die flache Lagune, Ninh Chu die offene Bucht.</p>
+    <div class="n">Phan Rang — My Hoa Lagune<span class="badge b0">leer</span> <span class="badge b1">lokaler Guide vorhanden</span></div>
+    <div class="m">Saison Oktober–April, Peak November–März · 20–25 kn im Schnitt, Böen über 40 · N bis NE, cross-onshore · Lagune 16 km nördlich von Phan Rang</div>
+    <p>Die Basis der Etappe. Ninh Thuan liegt 100 km nördlich von Mui Ne, fängt den NE-Monsun frontal ab und ist dabei kaum ausgebaut. In der Lagune steht butterflaches Wasser mit minimalem Chop, draussen vor dem Riff läuft Welle — beides an einem Ort. Ninh Chu Bay ist die offene Bucht als Alternative.</p>
   </div>
+
+  <details class="warn"><summary><span class="ic">!</span><span>My Hoa ist stark tidenabhängig — das ist der entscheidende Punkt dieser Etappe</span></summary>
+<div class="body">Die Lagune ist im Wesentlichen nur bei auflaufendem und hohem Wasser fahrbar. Im ungünstigsten Fall zieht sich das Wasser bis hinter das Riff zurück, dann geht in der Lagune gar nichts — <b>manchmal für ein paar Stunden, manchmal für Tage</b>. Bei Niedrigwasser liegen ausserdem Felsen frei. Deshalb: Gezeitenkalender vor der Buchung ansehen und vor Ort bei einer der Schulen nachfragen, wie die Tide in eurer Woche läuft.<br>
+  <span class="sub">Spot-Guide: <a href="https://vietnam-kitesurfing.com/kitesurfing-phan-rang/">vietnam-kitesurfing.com — Kitesurfing Phan Rang</a></span></div></details>
   <div class="spot">
     <div class="n">Phu Quy Island<span class="badge b0">sehr leer</span> <span class="badge b1">4–6 Tage Abstecher</span></div>
     <div class="m">120 km vor Phan Thiet · Schnellboot ca. 2½ h · Flachwasser-Lagune plus Wellenbreaks</div>
@@ -172,7 +311,34 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
     <p>Kein Aufenthalt, sondern der Ort, an dem es Ersatzteile, Reparaturen und funktionierende Shops gibt. Einmal durch, einkaufen, weiter.</p>
   </div>
 
-  <div class="note"><b>Phu Quy kann euch festhalten.</b> Wird der Swell zu gross, stellen die Boote den Betrieb ein — Kiter sind dort schon hängengeblieben. Plant den Abstecher <b>niemals direkt vor einen Weiterflug</b>, sondern mit mindestens drei Tagen Puffer zurück auf dem Festland.</div>
+  <details class="warn"><summary><span class="ic">!</span><span>Phu Quy kann euch festhalten — nie vor einen Weiterflug legen</span></summary>
+<div class="body">Wird der Swell zu gross, stellen die Boote den Betrieb ein — Kiter sind dort schon hängengeblieben. Plant den Abstecher <b>niemals direkt vor einen Weiterflug</b>, sondern mit mindestens drei Tagen Puffer zurück auf dem Festland.</div></details>
+
+  <details class="acc"><summary>Anreise <span class="hint">über Taipeh · 3 Etappen · CHF 360–610</span></summary>
+  <div class="body">
+  <div class="scroll"><table>
+  <tr><th>Abschnitt</th><th>Details</th><th>Preis/Person</th></tr>
+  <tr><td><b>Ishigaki → Ho-Chi-Minh-Stadt</b></td><td>Über Taipeh: Tigerair oder China Airlines ab Ishigaki in 1 h 10, weiter nach Saigon rund 3 h. <b>Reiner Flughafentransit</b>, kein Aufenthalt in Taiwan nötig.</td><td class="num">CHF 300–480</td></tr>
+  <tr><td>Ho-Chi-Minh-Stadt → Phan Rang</td><td>Bahn oder privater Transfer, rund 5 h. Alternativ Flug nach Cam Ranh (CXR) und von dort 1 h Transfer — schneller, aber mit Boardbags oft nicht billiger.</td><td class="num">CHF 40–90</td></tr>
+  <tr><td>Abstecher Phu Quy</td><td>Schnellboot ab Phan Thiet, rund 2½ h. Fährt nicht bei grossem Swell — <b>drei Tage Puffer einplanen</b>.</td><td class="num">CHF 20–40</td></tr>
+  <tr><td><b>Vor Ort</b></td><td><b>Roller.</b> Die Lagune My Hoa liegt 16 km nördlich von Phan Rang; wer in der Stadt wohnt, fährt zweimal täglich rund 20 Minuten. Wer direkt an der Lagune schläft, braucht gar nichts. Auf Phu Quy ebenfalls Roller, die Insel ist klein.</td><td class="num">CHF 5–8 / Tag</td></tr>
+  </table></div>
+  </div></details>
+
+  <details class="acc"><summary>Schlafen <span class="hint">8 Optionen · ab CHF 7</span></summary>
+<div class="body">
+    <div class="scroll"><table>
+    <tr><th>Unterkunft</th><th>Lage &amp; Art</th><th>Preis grob</th><th>Warum</th></tr>
+    <tr><td class="pick">Vietnam Surf Camp<span class="tagx">erste Wahl</span></td><td>direkt an der My-Hoa-Lagune · Strandbungalows und Glamping-Domes</td><td class="num">CHF 30–70 / Nacht</td><td>Das grösste Wassersportzentrum direkt an der Lagune, mit dem grössten eigenen Strandabschnitt. Restaurant, Bar, Skatepark, Outdoor-Gym. Wenn die Tide gerade nicht mitspielt, hat man wenigstens etwas zu tun.</td></tr>
+    <tr><td>Sorrento Beach Club</td><td>direkt an der Lagune · Zimmer um Garten und Infinity-Pool</td><td class="num">CHF 45–95 / Nacht</td><td>Die komfortabelste Option am Spot. Sinnvoll, wenn nicht alle in der Gruppe im Camp wohnen wollen.</td></tr>
+    <tr><td>My Hoa Lagoon Kiting Town</td><td>an der Lagune · familiengeführt, seit 2023</td><td class="num">CHF 25–55 / Nacht</td><td>Von Kitern für Kiter gebaut, klein und ruhig.</td></tr>
+    <tr><td>Phan Rang Kite Center</td><td>an der Lagune · Schule mit Unterkunft und Restaurant</td><td class="num">CHF 25–60 / Nacht</td><td>Alles unter einem Dach inklusive Depot und Kompressor. Guter Ansprechpartner für die Gezeitenlage.</td></tr>
+    <tr><td>Phan Rang Stadt</td><td>Hotels in der Stadt · 20 Min Roller zur Lagune</td><td class="num">CHF 15–40 / Nacht</td><td>Billiger und mit echtem Stadtleben, dafür jeden Tag zweimal 20 Minuten Roller mit Board.</td></tr>
+    <tr><td><b>Phu Quy</b> — Club House / Premium Guesthouse</td><td>Kite- und Windsurf-Camp auf der Insel · vierstöckiges Haus mit Dachterrasse</td><td class="num">CHF 25–50 / Nacht</td><td>Ein- und Zweibettzimmer mit Warmwasser, Klimaanlage, WLAN. Die naheliegende Wahl, wenn ihr den Abstecher als Camp bucht.</td></tr>
+    <tr><td><b>Phu Quy</b> — Mini-Hotels und Homestays</td><td>rund um den Hafen und in Tam Thanh · gut zwei Dutzend Häuser</td><td class="num">200.000–250.000 ₫ Doppel<br>400.000 ₫ Vierbett<br>≈ CHF 7–14 / Zimmer</td><td>Absurd günstig, sauber und meist recht neu. Sea Mê Homestay wird oft empfohlen. Bei Homestays hilft ein paar Brocken Vietnamesisch.</td></tr>
+    <tr><td><b>Mui Ne</b></td><td>1 Nacht in Ham Tien, nahe den Kiteshops</td><td class="num">CHF 20–50 / Nacht</td><td>Reiner Versorgungsstopp. Lage nach Nähe zu den Shops wählen, nicht nach Strand.</td></tr>
+    </table></div>
+    <p class="sub">Die Lagunen-Unterkünfte liegen alle nebeneinander am selben Strandabschnitt — ihr könnt also problemlos zwei verschiedene für die Gruppe buchen. <b>Alles inklusive Depot und Kompressor vor Ort</b>, das spart das tägliche Schleppen.</p></div></details>
 </div>
 
 <div class="stage">
@@ -190,75 +356,110 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
     <p>Als Basis zu voll, als Zwischenstopp praktisch: Schulen, Shops, Reparaturen und der Anschluss weiter nach Süden. Wer will, fährt eine Session am Morgen, wenn der Wind am stärksten und das Becken am leersten ist.</p>
   </div>
 
-  <div class="note"><b>Der Weg nach Cuyo ist die eigentliche Aufgabe.</b> Nach Cuyo führen ein winziger Flughafen und eine Nachtfähre. <b>Die Flugzeuge lassen nur 20 kg Gepäck zu</b> — mit Kiteausrüstung ist das nicht machbar. Der Weg ist deshalb: Manila → Puerto Princesa fliegen, dort auf die Fähre. Sie fährt rund viermal pro Woche, über Nacht, und braucht je nach See <b>12 bis 30 Stunden</b>. Unterkunft auf Cuyo ist knapp; das Anino Kite Resort hat drei Cottages und vier Doppelzimmer — früh reservieren.</div>
+  <details class="warn"><summary><span class="ic">!</span><span>Nach Cuyo nur mit der Nachtfähre — die Flugzeuge nehmen nur 20 kg</span></summary>
+<div class="body">Nach Cuyo führen ein winziger Flughafen und eine Nachtfähre. <b>Die Flugzeuge lassen nur 20 kg Gepäck zu</b> — mit Kiteausrüstung ist das nicht machbar. Der Weg ist deshalb: Manila → Puerto Princesa fliegen, dort auf die Fähre. Sie fährt rund viermal pro Woche, über Nacht, und braucht je nach See <b>12 bis 30 Stunden</b>.</div></details>
+
+  <details class="acc"><summary>Anreise und Rückflug <span class="hint">Direktflug nach Manila · 5 Etappen · CHF 750–1.350</span></summary>
+  <div class="body">
+  <div class="scroll"><table>
+  <tr><th>Abschnitt</th><th>Details</th><th>Preis/Person</th></tr>
+  <tr><td><b>Ho-Chi-Minh-Stadt → Manila</b></td><td><b>Direktflug</b>, 2 h 35, siebzehnmal pro Woche mit Philippine Airlines, Vietnam Airlines oder Cebu Pacific. Der bequemste Sprung der ganzen Route.</td><td class="num">CHF 150–250</td></tr>
+  <tr><td>Manila → Caticlan</td><td>Für den Zwischenstopp Boracay: Philippine Airlines oder Cebu Pacific, rund 1 h. Kalibo ist billiger, liegt aber 2 h Bustransfer entfernt.</td><td class="num">CHF 40–80</td></tr>
+  <tr><td>Manila → Puerto Princesa</td><td>Rund 1 h 20. Der Umweg ist nötig, weil die Fähre nach Cuyo von dort ablegt.</td><td class="num">CHF 40–80</td></tr>
+  <tr><td>Puerto Princesa → Cuyo</td><td><b>Nachtfähre</b>, rund viermal pro Woche, 12–30 h je nach See. Der einzige Weg mit vollem Kitegepäck — die Flugzeuge nach Cuyo nehmen nur 20 kg.</td><td class="num">CHF 20–40</td></tr>
+  <tr><td><b>Vor Ort auf Cuyo</b></td><td><b>Tricycle oder Motorrad.</b> Vom Hafen sind es 20 Minuten zum Anino Kite Resort, vom Flughafen nur wenige Minuten. Mehr braucht die Insel nicht.</td><td class="num">wenige CHF</td></tr>
+  <tr><td><b>Rückflug Manila → Zürich</b></td><td>Kein Direktflug. Kürzeste Verbindung rund 15 h 50 über Istanbul, Dubai, Doha, Singapur oder Hongkong. <b>Als Open Jaw zusammen mit dem Hinflug nach Tokio buchen.</b></td><td class="num">CHF 500–900</td></tr>
+  <tr><td><b>Rückflug Manila → München</b></td><td>Ebenfalls kein Direktflug. Kürzeste Verbindung rund 15 h 25 über Hongkong; häufig gewählt werden auch Abu Dhabi, Doha und Singapur. Preislich und zeitlich praktisch gleichauf mit Zürich — die beiden aus München buchen einfach ihren eigenen Open Jaw München → Haneda / Manila → München.</td><td class="num">EUR 480–880</td></tr>
+  </table></div>
+  </div></details>
+
+  <details class="acc"><summary>Schlafen <span class="hint">4 Optionen · Anino ist der Engpass</span></summary>
+<div class="body">
+    <div class="scroll"><table>
+    <tr><th>Unterkunft</th><th>Lage &amp; Art</th><th>Preis grob</th><th>Warum</th></tr>
+    <tr><td class="pick"><a href="https://www.anino-retreat-cuyo.com/">Anino Kite Resort</a><span class="tagx">der Engpass</span></td><td>eigener Strand auf Cuyo · <b>3 Cottages und 4 Doppelzimmer</b> · wenige Minuten vom Flughafen, 20 Min per Tricycle vom Hafen</td><td class="num">CHF 40–80 / Nacht</td><td>400 m Privatstrand mit side-onshore Wind direkt vor der Tür. Praktisch die einzige auf Kiter ausgelegte Unterkunft der Insel. <b>Sieben Einheiten für die stärkste Kitewoche des Jahres — das ist das knappste Gut der gesamten Route.</b> Sofort anfragen, notfalls die Reisedaten danach ausrichten.</td></tr>
+    <tr><td>Pensionen in Cuyo-Stadt</td><td>am Ort, nahe Capusan Beach</td><td class="num">CHF 15–35 / Nacht</td><td>Der Plan B, falls Anino ausgebucht ist. Einfach, aber direkt am zweiten Spot der Insel. Vorab per Nachricht anfragen — online buchbar ist wenig.</td></tr>
+    <tr><td><b>Puerto Princesa</b></td><td>1 Nacht vor der Fähre</td><td class="num">CHF 25–60 / Nacht</td><td>Die Fähre fährt nachts und nicht täglich. Eine Nacht in Hafennähe einplanen, damit ihr sie nicht verpasst.</td></tr>
+    <tr><td><b>Boracay</b> — Bulabog-Seite</td><td>1–2 Nächte, Umsteigestopp</td><td class="num">CHF 30–80 / Nacht</td><td>Bewusst auf der Bulabog-Seite buchen, nicht am White Beach: kurze Wege zu Shops, Reparaturen und dem Wasser. Die Kitecenter am Bulabog vermieten meist auch Zimmer.</td></tr>
+    </table></div>
+    <p class="sub"><b>Reihenfolge der Buchung:</b> erst Anino auf Cuyo anfragen, dann den Fährtag darum legen, dann die Flüge. Umgekehrt verliert ihr Tage.</p></div></details>
 </div>
 
-<h2>Karte</h2>
-<p class="sub">Punkte antippen für Wind, Andrang und Anreise.</p>
-<div class="mapwrap"><svg id="map" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reiseroute Okinawa, Vietnam, Philippinen"></svg></div>
-<div class="legend" id="legend"></div>
-<div class="detail" id="detail"></div>
-
-<h2>Flüge ab Zürich</h2>
+<h2>Flüge ab Zürich und München</h2>
+<details class="acc"><summary>Kosten auf einen Blick <span class="hint">Details stehen bei den Etappen</span></summary>
+<div class="body">
 <div class="scroll"><table>
-<tr><th>Etappe</th><th>Verbindung</th><th>Preis/Person</th></tr>
-<tr><td><b>Hinflug</b></td><td><b>Zürich → Tokio Narita, Swiss LX160 — Direktflug</b>, 13 h 05. Fliegt Mo, Mi, Fr, Sa und So; der <b>20. Dezember ist ein Sonntag</b>, passt also. Abflug 13:05, Ankunft 09:10.</td><td class="num">CHF 900–1.500</td></tr>
-<tr><td>Anschluss</td><td>Tokio → Ishigaki. Ankunft in Narita, Abflug ab Haneda — Flughafenwechsel rund 1½ h. ANA und JAL fliegen die 787 in gut 3 h, 28 Abflüge pro Woche. <b>Mit JAL Japan Explorer Pass oder ANA Experience Japan Fare</b> kostet das als Ausländer einen Bruchteil, nur zusammen mit dem internationalen Ticket buchbar. Mit Kitegepäck eine Nacht Tokio einplanen.</td><td class="num">CHF 40–200</td></tr>
-<tr><td>Regional</td><td>Ishigaki → Miyakojima, RAC oder JTA, rund 30 Minuten.</td><td class="num">CHF 50–90</td></tr>
-<tr><td>Regional</td><td>Ishigaki → Ho-Chi-Minh-Stadt über Taipeh. Tigerair oder China Airlines nach Taipeh in 1 h 10, weiter nach Saigon rund 3 h. Reiner Flughafentransit.</td><td class="num">CHF 300–480</td></tr>
-<tr><td>Landweg</td><td>Ho-Chi-Minh-Stadt → Phan Rang. Bahn oder Transfer, rund 5 h. Alternativ Flug nach Cam Ranh und 1 h Transfer.</td><td class="num">CHF 40–90</td></tr>
-<tr><td>Abstecher</td><td>Phan Thiet → Phu Quy, Schnellboot rund 2½ h. Puffer einplanen.</td><td class="num">CHF 20–40</td></tr>
-<tr><td>Regional</td><td><b>Ho-Chi-Minh-Stadt → Manila — Direktflug</b>, 2 h 35, siebzehnmal pro Woche mit Philippine Airlines, Vietnam Airlines oder Cebu Pacific.</td><td class="num">CHF 150–250</td></tr>
-<tr><td>Regional</td><td>Manila → Puerto Princesa, Philippine Airlines oder Cebu Pacific, rund 1 h 20.</td><td class="num">CHF 40–80</td></tr>
-<tr><td>Fähre</td><td>Puerto Princesa → Cuyo, rund viermal pro Woche über Nacht, 12–30 h. Der einzige Weg mit vollem Kitegepäck.</td><td class="num">CHF 20–40</td></tr>
-<tr><td><b>Rückflug</b></td><td>Manila → Zürich. Kein Direktflug, kürzeste Verbindung rund 15 h 50 über Istanbul, Dubai, Doha, Singapur oder Hongkong.</td><td class="num">CHF 500–900</td></tr>
-<tr><td colspan="2"><b>Summe Flüge und Transfers</b></td><td class="num"><b>CHF 2.060–3.670</b></td></tr>
+<tr><th>Etappe</th><th>Enthalten</th><th>Preis/Person</th></tr>
+<tr><td><b>Anreise Okinawa</b></td><td>Zürich → Tokio Narita <i>bzw.</i> München → Tokio Haneda — beides Direktflüge · Tokio → Ishigaki · Ishigaki → Miyakojima</td><td class="num">CHF 990–1.790</td></tr>
+<tr><td><b>Weiter nach Vietnam</b></td><td>Ishigaki → Saigon über Taipeh · Transfer Phan Rang · Boot Phu Quy</td><td class="num">CHF 360–610</td></tr>
+<tr><td><b>Weiter auf die Philippinen und zurück</b></td><td>Saigon → Manila (Direktflug) · Caticlan · Puerto Princesa · Fähre Cuyo · Rückflug Manila → Zürich bzw. München</td><td class="num">CHF 750–1.350</td></tr>
+<tr><td><b>Summe Flüge und Transfers</b></td><td>10 Etappen</td><td class="num"><b>CHF 2.100–3.750</b></td></tr>
+<tr><td colspan="2">Dazu Mietwagen auf Okinawa und Roller in Vietnam</td><td class="num">ca. CHF 250–450</td></tr>
+<tr><td colspan="2"><b>Ab München</b> liegen die Langstrecken preislich gleichauf — der Direktflug nach Haneda spart zusätzlich eine Übernachtung in Tokio.</td><td class="num">EUR 1.330–2.280<br><span class="sub">nur Langstrecke hin und zurück</span></td></tr>
 </table></div>
+</div></details>
 
-<div class="note"><b>Als ein Open-Jaw-Ticket buchen:</b> hin nach Tokio, zurück ab Manila. Meist günstiger als zwei One-Ways, und bei Verspätungen bucht die Airline euch um. Die Regionalflüge dagegen erst später buchen — sie sind billig und kurzfristig verfügbar.</div>
+<details class="warn"><summary><span class="ic">!</span><span>Als ein Open-Jaw-Ticket buchen</span></summary>
+<div class="body">hin nach Tokio, zurück ab Manila. Meist günstiger als zwei One-Ways, und bei Verspätungen bucht die Airline euch um. Die Regionalflüge dagegen erst später buchen — sie sind billig und kurzfristig verfügbar.</div></details>
 
 <h2>Optionale Verlängerung — 15. Februar bis 15. März, für zwei</h2>
 <p>29 zusätzliche Tage, nachdem die Gruppe abgereist ist. Der Amihan läuft bis April, Februar und März sind auf den Philippinen also weiter volle Saison.</p>
-<div class="scroll"><table>
+<details class="acc"><summary>Wohin in der Verlängerung <span class="hint">Seco · Cuyo · El Nido · Pagudpud</span></summary>
+<div class="body"><div class="scroll"><table>
 <tr><th>Ziel</th><th>Was dort wartet</th></tr>
 <tr><td><b>Seco Island</b></td><td>Sandbank von 400 × 100 m in der Sulusee, 50 km westlich von Panay. Windig von Januar bis April, und es weht rund 5 Knoten mehr als auf Boracay — gilt als bester Freestyle-Spot der Philippinen. Anreise per Bus von Boracay nach Culasi, dann Boot; übernachtet wird im Zelt, meist drei Nächte am Stück.</td></tr>
 <tr><td><b>Cuyo, zweite Runde</b></td><td>Zurück auf die Insel, diesmal ohne Zeitdruck. Februar und März liegen mitten im stärksten Amihan.</td></tr>
 <tr><td><b>El Nido — Sibaltan und San Fernando</b></td><td>Die Ostküste von El Nido ist ruhig und praktisch unbesiedelt — der Gegenentwurf zum touristischen Westen der Halbinsel.</td></tr>
-<tr><td><b>Pagudpud, Luzon</b></td><td>Ganz im Norden, unverbaut und uncrowded, mit Flachwasser und brauchbaren Wellen. Zwei Flugstunden ab Manila oder ein halber Tag mit dem Auto.</td></tr>
-</table></div>
+<tr><td><b>Pagudpud, Luzon</b></td><td>Ganz im Norden, unverbaut und uncrowded, mit Flachwasser und brauchbaren Wellen. Zwei Flugstunden ab Manila oder ein halber Tag mit dem Auto. Das Kingfisher Resort direkt am Strand bietet Kitesurfen und Unterkunft in einem.</td></tr>
+</table></div></div></details>
 
-<div class="note"><b>Visum verlängern.</b> Visumfrei sind auf den Philippinen nur <b>30 Tage</b>. Die Gruppe bleibt 18 Tage und ist damit im Rahmen. Die zwei, die verlängern, kommen auf rund sieben Wochen im Land und brauchen die erste Verlängerung: 29 zusätzliche Tage für rund ₱3.000–3.500 (etwa CHF 50–60) bei jedem Büro der Bureau of Immigration, auch auf Boracay. <b>Spätestens sieben Tage vor Ablauf</b> beantragen — Überziehen kostet ₱500 pro Monat zusätzlich. Ausserdem: eigene Langzeit-Reisekrankenversicherung, viele Policen decken nur 60 oder 70 Tage.</div>
+<details class="acc"><summary>Schlafen in der Verlängerung <span class="hint">4 Orte · Seco nur im Zelt</span></summary>
+<div class="body">
+<div class="scroll"><table>
+<tr><th>Ort</th><th>Unterkunft</th><th>Preis grob</th></tr>
+<tr><td>Seco Island</td><td><b>Zelt.</b> Anders geht es nicht — die Camps organisieren Boot, Zelte und Verpflegung, üblich sind drei Nächte am Stück. Gebucht wird ab Boracay oder Culasi.</td><td class="num">Camp-Paket, meist all-inclusive</td></tr>
+<tr><td>Cuyo</td><td>Wieder Anino Kite Resort oder eine Pension im Ort. Im Februar und März ist es dort leerer als im Hochwinter.</td><td class="num">CHF 15–80 / Nacht</td></tr>
+<tr><td>El Nido — Sibaltan</td><td>Kleine Strandpensionen und Homestays an der ruhigen Ostküste, nicht im touristischen Westen.</td><td class="num">CHF 25–60 / Nacht</td></tr>
+<tr><td>Pagudpud</td><td>Kingfisher Resort direkt am Kitestrand, dazu einfache Gästehäuser im Ort.</td><td class="num">CHF 30–70 / Nacht</td></tr>
+</table></div></div></details>
+
+<details class="warn"><summary><span class="ic">!</span><span>Visum verlängern — die Philippinen geben nur 30 Tage</span></summary>
+<div class="body">Visumfrei sind auf den Philippinen nur <b>30 Tage</b>. Die Gruppe bleibt 18 Tage und ist damit im Rahmen. Die zwei, die verlängern, kommen auf rund sieben Wochen im Land und brauchen die erste Verlängerung: 29 zusätzliche Tage für rund ₱3.000–3.500 (etwa CHF 50–60) bei jedem Büro der Bureau of Immigration, auch auf Boracay. <b>Spätestens sieben Tage vor Ablauf</b> beantragen — Überziehen kostet ₱500 pro Monat zusätzlich. Ausserdem: eigene Langzeit-Reisekrankenversicherung, viele Policen decken nur 60 oder 70 Tage.</div></details>
 
 <h2>Budget pro Person</h2>
-<div class="scroll"><table>
+<details class="acc"><summary>Budget aufgeschlüsselt <span class="hint">4.000–6.000 € ohne Flug</span></summary>
+<div class="body"><div class="scroll"><table>
 <tr><th>Posten</th><th>Betrag</th><th>Anmerkung</th></tr>
 <tr><td>Okinawa, 20 Tage</td><td class="num">1.700–2.500 €</td><td>Teuerste Etappe. Unterkunft mit Küche und Mietwagen zu viert teilen senkt das spürbar.</td></tr>
 <tr><td>Vietnam, 19 Tage</td><td class="num">850–1.330 €</td><td>Inklusive Phu-Quy-Abstecher. Die günstigste Etappe.</td></tr>
 <tr><td>Philippinen, 18 Tage</td><td class="num">1.000–1.530 €</td><td>Cuyo selbst ist billig, die Transfers dorthin nicht.</td></tr>
 <tr><td>Versicherung, Visa, Puffer</td><td class="num">400–600 €</td><td>Reisekranken mit <b>ausdrücklich eingeschlossenem Kitesurfen</b> und Rücktransport.</td></tr>
-<tr><td><b>Summe ohne Flüge</b></td><td class="num"><b>4.000–6.000 €</b></td><td>Liegt klar unter dem ursprünglichen Rahmen — der Verzicht aufs Boot spart rund 2.000–2.900 €.</td></tr>
-<tr><td>Flüge und Transfers</td><td class="num">CHF 2.060–3.670</td><td>Siehe oben.</td></tr>
-</table></div>
+<tr><td><b>Summe ohne Flüge</b></td><td class="num"><b>4.000–6.000 €</b></td><td>Deutlich unter dem gesteckten Rahmen von 5.000–10.000 € pro Person.</td></tr>
+<tr><td>Flüge und Transfers</td><td class="num">CHF 2.100–3.750</td><td>Siehe oben.</td></tr>
+</table></div></div></details>
 
 <h2>Visa und Material</h2>
-<div class="scroll"><table>
+<details class="acc"><summary>Visa für die drei Länder <span class="hint">Japan 90 · Vietnam 90 · Philippinen 30 Tage</span></summary>
+<div class="body"><div class="scroll"><table>
 <tr><th>Land</th><th>Regelung</th><th>Aktion</th></tr>
 <tr><td>Japan</td><td>visumfrei, 90 Tage</td><td>nichts</td></tr>
 <tr><td>Vietnam</td><td>E-Visum, 90 Tage</td><td>online, 3–5 Werktage Vorlauf</td></tr>
 <tr><td>Philippinen</td><td>visumfrei, 30 Tage</td><td>Gruppe im Rahmen; Verlängerer müssen vor Ort verlängern</td></tr>
-</table></div>
+</table></div></div></details>
 
 <p style="margin-top:18px"><b>Kites:</b> 7, 9 und 12 m decken die ganze Route ab. Okinawa und Cuyo laufen auf 7–9, Phan Rang bei 25–40 Knoten ebenfalls klein, der 12er ist für schwache Tage in Vietnam und die Verlängerung.</p>
-<p><b>Dazu:</b> 3/2-Neopren nur für Okinawa, danach reicht Lycra. Neoprenschuhe wegen Riff auf Ishigaki, Miyakojima und Cuyo. <b>Ein komplettes Ersatz-Setup in der Gruppe</b> plus Bladders, Leinen, Pumpe, Ersatz-Bar und Reparaturkit — auf Ishigaki und Cuyo bekommt ihr nichts nachgekauft. Einkaufsgelegenheiten gibt es nur in Mui Ne und auf Boracay, und beide liegen bewusst spät in der Route.</p>
+<p><b>Dazu:</b> 3/2-Neopren nur für Okinawa, danach reicht Lycra. Neoprenschuhe wegen Riff und Korallenbruch auf Ishigaki, an Takano und Nishihama auf Miyakojima sowie auf Cuyo. <b>Ein komplettes Ersatz-Setup in der Gruppe</b> plus Bladders, Leinen, Pumpe, Ersatz-Bar und Reparaturkit. Sandyfeet und M-air vermieten zwar Material, aber Ersatzteile kaufen könnt ihr auf der ganzen Route nur in Mui Ne und auf Boracay — und beide liegen bewusst spät.</p>
 <p class="sub">Boardbag-Gebühren bei Cebu Pacific, VietJet und Tigerair vorab online buchen. Am Schalter wird es unverhältnismässig teuer, und die Fähre nach Cuyo nimmt zwar alles mit, der Flug dorthin aber nur 20 kg.</p>
 
 <h2>Nächste Schritte</h2>
 <div class="check">
-  <label><input type="checkbox"><span><span class="q">Open-Jaw-Ticket Zürich → Tokio / Manila → Zürich buchen</span><span class="why">Der Weihnachtsabflug ist der teuerste Termin des Jahres. Swiss LX160 fliegt am 20. Dezember, aber die Maschine ist früh voll.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Zwei Open-Jaw-Tickets buchen: ab Zürich und ab München</span><span class="why">Zürich → Tokio Narita mit Swiss, München → Tokio Haneda mit Lufthansa oder ANA, Rückflug jeweils ab Manila. Getrennt buchen ist hier besser als gemeinsam — die Münchner sparen sich den Flughafenwechsel in Tokio. Der Weihnachtsabflug ist der teuerste Termin des Jahres, beide Maschinen sind früh voll.</span></span></label>
   <label><input type="checkbox"><span><span class="q">Unterkunft auf Ishigaki über Neujahr fixieren</span><span class="why">Vom 31. Dezember bis 3. Januar ist in Japan vieles geschlossen. Unterkunft mit Küche, und zwar jetzt.</span></span></label>
   <label><input type="checkbox"><span><span class="q">Anino Kite Resort auf Cuyo anfragen</span><span class="why">Drei Cottages und vier Doppelzimmer für die beste Kite-Woche des Jahres. Das ist der Engpass der ganzen Route.</span></span></label>
   <label><input type="checkbox"><span><span class="q">Fährplan Puerto Princesa → Cuyo prüfen</span><span class="why">Rund viermal pro Woche, 12–30 Stunden. Die Etappe muss auf einen Fährtag fallen, sonst verliert ihr zwei Tage.</span></span></label>
-  <label><input type="checkbox"><span><span class="q">Ersatzmaterial in der Gruppe abstimmen</span><span class="why">Wer bringt den Ersatzkite, wer die Bar, wer das Reparaturkit? Auf Ishigaki und Cuyo gibt es keinen Shop.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">M-air auf Miyakojima vorab kontaktieren</span><span class="why">Pflichtschritt, nicht optional: Es gibt Sperrzonen und Fischereigebiete mit begrenzten Kiteflächen. Erst nach der Spot-Einweisung aufs Wasser.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">Ersatzmaterial in der Gruppe abstimmen</span><span class="why">Wer bringt den Ersatzkite, wer die Bar, wer das Reparaturkit? Sandyfeet und M-air vermieten zwar, aber Ersatzteile gibt es erst wieder in Mui Ne.</span></span></label>
+  <label><input type="checkbox"><span><span class="q">JAF-Führerscheinübersetzung für alle Fahrer bestellen</span><span class="why">Der internationale Führerschein aus der Schweiz und Deutschland gilt in Japan nicht. Ohne amtliche japanische Übersetzung bekommt ihr keinen Mietwagen — und ohne Mietwagen auf Miyakojima keine Spots.</span></span></label>
   <label><input type="checkbox"><span><span class="q">Mietwagen für Ishigaki und Miyakojima reservieren</span><span class="why">Ohne Auto kommt ihr an die Spots nicht heran. Über Neujahr sind die Flotten knapp.</span></span></label>
   <label><input type="checkbox"><span><span class="q">Wer verlängert bis 15. März?</span><span class="why">Muss vor der Ticketbuchung feststehen — getrennte Tickets sind billiger als jede Umbuchung, und die Visumsverlängerung will geplant sein.</span></span></label>
   <label><input type="checkbox"><span><span class="q">Versicherung mit Kitesurfen und Rücktransport abschliessen</span><span class="why">Viele Policen schliessen Kiten als Extremsport aus. Für die zwei Verlängerer eine eigene Langzeitpolice über drei Monate.</span></span></label>
@@ -266,15 +467,39 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <footer>
   Stand: 16. August 2026 · Preise und Saisonangaben sind Richtwerte und vor Buchung beim Anbieter zu prüfen.<br>
-  Quellen u. a.: Kitesurfing Official (Akaishi), Let's Kite, Kiteloopers, Cuyo Kiteboarding, Anino Kite Resort, IKSURFMAG (Cuyo, Seco), Swiss, FlightConnections, Bureau of Immigration Philippines.
+  Spot-Guides: <a href="https://www.sandyfeetkitesurfing.com/kite-spot">Sandyfeet Kitesurfing, Ishigaki</a> · <a href="https://m-air-kite.com/en/recruit.html">M-air, Miyakojima</a><br>
+  Weitere Quellen: Kiteloopers, Cuyo Kiteboarding, Anino Kite Resort, IKSURFMAG (Cuyo, Seco), Vietnam Kitesurfing Holidays (Phu Quy), Swiss, FlightConnections, Bureau of Immigration Philippines.
 </footer>
 </div>
 
 <script>
+/* Alle Dropdowns auf einmal auf- und zuklappen, und beim Drucken automatisch öffnen */
+(function(){
+var btn=document.getElementById("toggleall");
+function all(){return document.querySelectorAll("details.acc, details.warn");}
+btn.addEventListener("click",function(){
+  var open=[].some.call(all(),function(d){return !d.open;});
+  [].forEach.call(all(),function(d){d.open=open;});
+  btn.textContent=open?"Alle Details zuklappen":"Alle Details aufklappen";
+});
+var wasOpen=[];
+window.addEventListener("beforeprint",function(){
+  wasOpen=[].map.call(all(),function(d){return d.open;});
+  [].forEach.call(all(),function(d){d.open=true;});
+});
+window.addEventListener("afterprint",function(){
+  [].forEach.call(all(),function(d,i){d.open=wasOpen[i];});
+});
+})();
+
 (function(){
 var SVG="http://www.w3.org/2000/svg",svg=document.getElementById("map");
-var S=24,OX=25,OY=12;
-function px(lo,la){return [OX+(lo-103)*S,OY+(27-la)*S];}
+/* Layout wird je nach Bildschirmbreite gesetzt: schmalere viewBox = relativ groessere
+   Schrift und groessere Tippflaechen auf dem Handy. */
+var DESK={S:24,OX:25,OY:12,LON0:103,LAT0:27,W:700,H:480,fs:11,fsr:10.5,r:5,hit:12,off:9,dy:3.6,sc:1,short:false};
+var MOB ={S:17.5,OX:18,OY:14,LON0:105.5,LAT0:25.8,W:410,H:315,fs:12,fsr:10,r:5.5,hit:15,off:8,dy:3.8,sc:.75,short:true};
+var P=DESK;
+function px(lo,la){return [P.OX+(lo-P.LON0)*P.S,P.OY+(P.LAT0-la)*P.S];}
 function el(n,a){var e=document.createElementNS(SVG,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
 function line(p){return p.map(function(q,i){var r=px(q[0],q[1]);return (i?"L":"M")+r[0].toFixed(1)+" "+r[1].toFixed(1);}).join(" ");}
 function poly(p){return line(p)+" Z";}
@@ -302,8 +527,8 @@ var LAND=[
 ];
 
 var SP={
- ishigaki:{ll:[124.16,24.40],n:"Ishigaki",c:C.jp,lf:1,ly:4,t:"<b>Ishigaki — Akaishi</b><br>Flachwasser hinter dem Riff über dutzende Kilometer Küste, NE-Passat bis 30 kn, Saison Oktober bis Februar. <b>Andrang: sehr niedrig</b> — es gibt weder Schule noch Shop noch Verleih auf der Insel.<span class='meta'>Luft 15–21 °C · Wasser 22–23 °C · 3/2 · 7–10 m</span>"},
- miyako:{ll:[125.30,24.78],n:"Miyakojima",c:C.jp,ly:-10,t:"<b>Miyakojima</b><br>Yoshino-Riff, Imgya-Lagune und der 7 km lange Yonaha Maehama. Mehrere geschützte Flachwasserstellen, Spotwahl je nach Windrichtung. <b>Mietwagen ist Pflicht</b> — alle Vermieter sitzen am Flughafen.<span class='meta'>30 Min Flug ab Ishigaki · 3/2</span>"},
+ ishigaki:{ll:[124.16,24.40],n:"Ishigaki",c:C.jp,lf:1,ly:4,t:"<b>Ishigaki — Akaishi, Yoshihara, Sakieda</b><br>Riff-Lagunen mit Flachwasser je nach Tide, Welle draussen vor dem Riff. 15–25 kn im Schnitt, Saison Oktober bis Juni. Insel in 1–3 h umrundet, Spotwahl per Auto oder Roller. <b>Andrang: sehr niedrig.</b> Sandyfeet Kitesurfing bietet Unterricht und Leihmaterial — Ersatzteile gibt es aber nicht zu kaufen.<span class='meta'>Luft 20–25 °C, Dez/Jan kühler · Neopren empfohlen · 7–10 m</span>"},
+ miyako:{ll:[125.30,24.78],n:"Miyakojima",c:C.jp,ly:-10,t:"<b>Miyakojima — fünf Spots</b><br>Sanitsuhama (N–SO, sicherstes Flachwasser), Nishihama (SW–N, Butterflachwasser bei Niedrigwasser), Maehama (SO–SSW, tief und strömungsreich, ideal zum Foilen), Takano (N–SO, Schildkröten, Schuhe nötig), Toguchi auf Irabu (SO–SW, Welle). <b>Vorher bei M-air melden</b> — es gibt Sperrzonen und Fischereigebiete. Mietwagen Pflicht.<span class='meta'>Beste Saison Mitte Okt – Anfang März · über 2/3 der Tage fahrbar · Ende Dez–Feb Luft 15–20 °C, Wasser ca. 20 °C</span>"},
  taipei:{ll:[121.53,25.05],n:"Taipeh",c:C.hub,lf:1,t:"<b>Taipeh — reiner Transit</b><br>Kein Aufenthalt. Ishigaki → Taipeh ist ein Direktflug von 1 h 10, weiter nach Saigon rund 3 h. Ohne diesen Umstieg dauert der Weg nach Süden deutlich länger.<span class='meta'>Umsteigepunkt</span>"},
  hcmc:{ll:[106.66,10.76],n:"Ho-Chi-Minh-Stadt",c:C.hub,lf:1,ly:8,t:"<b>Ho-Chi-Minh-Stadt</b><br>Ankunft aus Taipeh, weiter per Bahn oder Transfer nach Phan Rang (rund 5 h). Später von hier der Direktflug nach Manila: 2 h 35, siebzehnmal pro Woche.<span class='meta'>Drehkreuz beider Vietnam-Enden</span>"},
  phanrang:{ll:[108.99,11.56],n:"Phan Rang",c:C.vn,t:"<b>Phan Rang — My Hoa &amp; Ninh Chu</b><br>Die Basis der Vietnam-Etappe. 100 km nördlich von Mui Ne, fängt den NE-Monsun frontal ab, 25–40 kn im Hochwinter. <b>Andrang: niedrig</b>, kaum ausgebaut, deutlich günstiger als Mui Ne.<span class='meta'>Luft 24–30 °C · Wasser 25–26 °C · kein Neopren · 7–9 m</span>"},
@@ -332,34 +557,58 @@ var LEGS=[
 ];
 var SPOTS=["ishigaki","miyako","taipei","hcmc","muine","phanrang","phuquy","manila","boracay","pps","cuyo","seco","pagudpud"];
 
-var base=el("g",{});svg.appendChild(base);
-base.appendChild(el("rect",{x:0,y:0,width:700,height:480,fill:"#e8eef2"}));
-LAND.forEach(function(p){base.appendChild(el("path",{d:poly(p),fill:"#dfdcd5",stroke:"#c9c6bf","stroke-width":.8,"stroke-linejoin":"round"}));});
-[["Vietnam",106.6,15.6],["Philippinen",125.6,15.6],["Taiwan",122.4,23.6],["Okinawa",127.2,25.6],["Südchinesisches Meer",114,15],["Sulusee",120,7.6]].forEach(function(x){
-  var q=px(x[1],x[2]),e=el("text",{x:q[0],y:q[1],"font-size":10.5,fill:"#9b9891","text-anchor":"middle","letter-spacing":.4});
-  e.textContent=x[0];base.appendChild(e);});
+/* Kurznamen fuers Handy, damit die Beschriftung nicht ueber den Kartenrand laeuft */
+var SHORT={hcmc:"Saigon",miyako:"Miyako",pps:"P. Princesa",seco:"Seco",boracay:"Boracay"};
+var REGIONS=[["Vietnam",106.6,15.6,1],["Philippinen",125.6,15.6,1],["Taiwan",122.4,23.6,0],
+             ["Okinawa",127.2,25.6,0],["Südchinesisches Meer",114,15,1,"Südchin. Meer"],["Sulusee",120,7.6,0]];
 
-var rg=el("g",{});svg.appendChild(rg);var sg=el("g",{});svg.appendChild(sg);
 var det=document.getElementById("detail");
 function arc(a,b,k){var p=px(a[0],a[1]),q=px(b[0],b[1]),mx=(p[0]+q[0])/2,my=(p[1]+q[1])/2,dx=q[0]-p[0],dy=q[1]-p[1];
   return "M"+p[0]+" "+p[1]+" Q"+(mx-dy*k)+" "+(my+dx*k)+" "+q[0]+" "+q[1];}
 
-LEGS.forEach(function(L){
-  rg.appendChild(el("path",{d:L.t==="f"?arc(L.a,L.b,L.k):line(L.p),fill:"none",stroke:L.c,
-    "stroke-width":L.t==="f"?2:2.6,"stroke-linecap":"round","stroke-dasharray":L.t==="f"?"5 4":"none",
-    opacity:L.c===C.ext?.55:.9}));});
+function render(){
+  while(svg.firstChild)svg.removeChild(svg.firstChild);
+  svg.setAttribute("viewBox","0 0 "+P.W+" "+P.H);
 
-SPOTS.forEach(function(id){
-  var s=SP[id],q=px(s.ll[0],s.ll[1]),g=el("g",{"class":"node",tabindex:"0",role:"button","aria-label":s.n});
-  g.appendChild(el("circle",{cx:q[0],cy:q[1],r:12,"class":"hit"}));
-  g.appendChild(el("circle",{cx:q[0],cy:q[1],r:5,fill:s.c,stroke:"#fff","stroke-width":1.7}));
-  var t=el("text",{x:q[0]+(s.lf?-9:9),y:q[1]+3.6+(s.ly||0),"font-size":11,"font-weight":600,
-    fill:"#3f3d39","text-anchor":s.lf?"end":"start"});
-  t.textContent=s.n;g.appendChild(t);
-  function show(){det.innerHTML=s.t;}
-  g.addEventListener("click",show);g.addEventListener("mouseenter",show);
-  g.addEventListener("keydown",function(e){if(e.key==="Enter")show();});
-  sg.appendChild(g);});
+  var base=el("g",{});svg.appendChild(base);
+  base.appendChild(el("rect",{x:0,y:0,width:P.W,height:P.H,fill:"#e8eef2"}));
+  LAND.forEach(function(p){base.appendChild(el("path",{d:poly(p),fill:"#dfdcd5",stroke:"#c9c6bf",
+    "stroke-width":.8,"stroke-linejoin":"round"}));});
+  REGIONS.forEach(function(x){
+    if(P.short&&!x[3])return;                       /* auf dem Handy nur die wichtigsten Labels */
+    var q=px(x[1],x[2]),e=el("text",{x:q[0],y:q[1],"font-size":P.fsr,fill:"#9b9891",
+      "text-anchor":"middle","letter-spacing":.4});
+    e.textContent=(P.short&&x[4])?x[4]:x[0];base.appendChild(e);});
+
+  var rg=el("g",{});svg.appendChild(rg);
+  LEGS.forEach(function(L){
+    rg.appendChild(el("path",{d:L.t==="f"?arc(L.a,L.b,L.k):line(L.p),fill:"none",stroke:L.c,
+      "stroke-width":L.t==="f"?2:2.6,"stroke-linecap":"round","stroke-dasharray":L.t==="f"?"5 4":"none",
+      opacity:L.c===C.ext?.55:.9}));});
+
+  var sg=el("g",{});svg.appendChild(sg);
+  SPOTS.forEach(function(id){
+    var s=SP[id],q=px(s.ll[0],s.ll[1]),g=el("g",{"class":"node",tabindex:"0",role:"button","aria-label":s.n});
+    g.appendChild(el("circle",{cx:q[0],cy:q[1],r:P.hit,"class":"hit"}));
+    g.appendChild(el("circle",{cx:q[0],cy:q[1],r:P.r,fill:s.c,stroke:"#fff","stroke-width":1.7}));
+    var t=el("text",{x:q[0]+(s.lf?-P.off:P.off),y:q[1]+P.dy+(s.ly||0)*P.sc,"font-size":P.fs,
+      "font-weight":600,fill:"#3f3d39","text-anchor":s.lf?"end":"start"});
+    t.textContent=(P.short&&SHORT[id])?SHORT[id]:s.n;g.appendChild(t);
+    function show(e){if(e)e.preventDefault();det.innerHTML=s.t;}
+    g.addEventListener("click",show);
+    g.addEventListener("keydown",function(e){if(e.key==="Enter")show(e);});
+    if(!P.short)g.addEventListener("mouseenter",show);   /* Hover nur am Desktop */
+    sg.appendChild(g);});
+}
+
+function layout(){
+  var w=svg.parentNode.clientWidth||window.innerWidth;
+  var next=w<620?MOB:DESK;
+  if(next!==P||!svg.firstChild){P=next;render();}
+}
+layout();
+var t;window.addEventListener("resize",function(){clearTimeout(t);t=setTimeout(layout,150);});
+window.addEventListener("orientationchange",function(){setTimeout(layout,250);});
 
 document.getElementById("legend").innerHTML=
  '<span class="k"><i style="background:#0891b2"></i>Okinawa · 20 Tage</span>'
